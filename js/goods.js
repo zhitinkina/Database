@@ -6,7 +6,7 @@ function init() {
     var hash = window.location.hash.substring(1);
     console.log(hash);
     $.post(
-        "admin/core.php",
+        "php/admin/core.php",
         {
             "action" : "loadSingleGoods", 
             "id" : hash

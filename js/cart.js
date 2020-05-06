@@ -107,7 +107,7 @@ function sendEmail() {
     if (ename!='' && email!='' && ephone!='') {
         if (isEmpty(cart)) {
             $.post(
-                "core/mail.php",
+                "php/include/core/mail.inc.php",
                 {
                     "ename" : ename,
                     "email" : email,
