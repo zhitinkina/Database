@@ -1,7 +1,7 @@
 function init() {
     //вычитуем файл goods.json
     $.post(
-        "admin/core.php",
+        "php/admin/core.php",
         {
             "action" : "loadGoogs"
         },

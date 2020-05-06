@@ -1,49 +1,5 @@
 var cart = {}; // корзина
 
-function init() {
-    //вычитуем файл goods.json
-    // $.getJSON("goods.json", goodsOut);
-    $.post(
-        "admin/core.php",
-        {
-            "action" : "loadGoogs"
-        },
-        goodsOut
-    );
-}
-
-function goodsOut(data) {
-    // вывод на страницу
-    data = JSON.parse(data);
-    console.log(data);
-    var out='';
-    for (var key in data) {
-        out +='<div class="cart">';
-        out +='<div class="cart__wrap">';
-        out +='<div class="cart__img">';
-        out +=`<img src="images/${data[key].img}" alt="">`;
-        out +='</div>';
-
-        out +='<div class="cart__info">';
-        out +=`<p class="name"><a href="goods.html#${key}">${data[key].name}</a></p>`;
-        out +=`<a class="add-to-later hearts" data-id="${key}"><img src="images/main/later.svg"></a>`;
-        out +='</div>';
-
-        out +=`<div class="cart__descr">${data[key].description}</div>`;
-
-        out +='<div class="cart__info">';
-        out +=`<div class="cost">${data[key].cost} &#x20BD;</div>`;
-        out +=`<a href="cart.html" class="cart__info-basket"><img src="images/main/basket.svg"></a>`;
-        out +=`<button class="add-to-cart btn" data-id="${key}">Купить</button>`;
-        out +='</div>';
-        out +='</div>';
-        out +='</div>';
-    }
-    $('.goods-out').html(out);
-    $('.add-to-cart').on('click', addToCart);
-    $('.add-to-later').on('click', addToLater);
-}
-
 function addToLater() {
     //добавляем товар в желания
     var later = {};
@@ -95,6 +51,5 @@ function loadCart() {
 }
 
 $(document).ready(function () {
-    init();
     loadCart();
 });
