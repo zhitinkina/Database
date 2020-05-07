@@ -1,28 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Администратор</title>
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="../css/goods.css">
-    </head>
+    {include file="head.tpl" title="Администратор"}
 
     <body class="page-info">
         <header class="header-goods">
-            <div class="wrapper header__wrap">
-            <div class="header__logo"><a href="../index.html"><img src="../images/main/logo.svg" alt="company"></a></div>
-            <nav class="header__nav">
-                <div class="header__right"><a href="all-goods.html" class="btn btn--category">Товары</a></div>
-                <a href="later.html"> <img src="../images/main/heart.svg"></a>
-                <a href="cart.html"><img src="../images/main/basket.svg"></a>
-                <div class="header__right"><a href="#" class="btn">Вход</a></div>
-            </nav>
-            </div>
-
-            <div class="title__block">
-                <div class="wrapper"><h1>Для админа</h1></div>
-            </div>
+            {include file="header.tpl" bla="Для админа"}
         </header>
 
         <main class="main-block">

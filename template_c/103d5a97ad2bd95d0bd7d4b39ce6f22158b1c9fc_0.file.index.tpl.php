@@ -1,47 +1,40 @@
 <?php
-/* Smarty version 3.1.29, created on 2020-05-07 15:03:20
+/* Smarty version 3.1.29, created on 2020-05-08 00:16:11
   from "E:\!git\tmp\server2go\htdocs\template\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5eb407184b2e02_26035339',
+  'unifunc' => 'content_5eb488ab9856b8_31087419',
   'file_dependency' => 
   array (
     '103d5a97ad2bd95d0bd7d4b39ce6f22158b1c9fc' => 
     array (
       0 => 'E:\\!git\\tmp\\server2go\\htdocs\\template\\index.tpl',
-      1 => 1588806969,
+      1 => 1588889757,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:head.tpl' => 1,
+    'file:header.tpl' => 1,
   ),
 ),false)) {
-function content_5eb407184b2e02_26035339 ($_smarty_tpl) {
+function content_5eb488ab9856b8_31087419 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>eshop</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/header.css">
-    </head>
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:head.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"eshop"), 0, false);
+?>
+
 
     <body class="page-home">
         <section class="home-hero">
             <header class="header">
-              <div class="wrapper header__wrap">
-                <div class="header__logo"><a href="index.html"><img src="images/main/logo.svg" alt="company"></a></div>
-                <nav class="header__nav">
-                    <div class="header__right"><a href="all-goods.php" class="btn btn--category">Товары</a></div>
-                    <a href="later.html"> <img src="images/main/heart.svg"></a>
-                    <a href="cart.html"><img src="images/main/basket.svg"></a>
-                    <div class="header__right"><a href="#" class="btn">Вход</a></div>
-                </nav>
-              </div>
+                <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('bla'=>''), 0, false);
+?>
+
             </header>
 
             <div class="wrapper home-hero__wrap">
@@ -66,7 +59,7 @@ function content_5eb407184b2e02_26035339 ($_smarty_tpl) {
     <footer></footer>
 
     <?php echo '<script'; ?>
- src="js/jquery-3.2.1.min.js"><?php echo '</script'; ?>
+ src="libs/jquery-3.2.1.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
  src="js/main.js"><?php echo '</script'; ?>

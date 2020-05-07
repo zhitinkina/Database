@@ -3,6 +3,7 @@
 
     // TODO: FUCK IT NOW! RENAME GOODS!
     // + plural form
+    // + SQL-inj
 
     function connect(){
         $conn = mysqli_connect("localhost", "root", "", "shop");
