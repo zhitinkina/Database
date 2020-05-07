@@ -1,5 +1,5 @@
 <?php
-    // TODO: Smarty
+    // TODO: Просто сделай с этим безобразием хоть что-нибудь
 
     $json = file_get_contents('../goods.json');
     $json = json_decode($json, true);

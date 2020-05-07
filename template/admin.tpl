@@ -29,7 +29,14 @@
             <div class="wrapper">
 
                 <div class="block-update">
-                    <div class="goods-out"></div>
+                    <div class="goods-out">
+                        <select class="select-goods">
+                            <option data-id="0">Новый товар</option>
+                            {foreach $categories as $category}
+                                <option data-id="{$category.id}">{$category.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
 
                     <p class="block-update__info">Имя:</p> <input class="block-update__input" type="text" id="gname">
                     <p class="block-update__info">Стоимость:</p> <input class="block-update__input" type="text" id="gcost">
@@ -37,7 +44,7 @@
                     <p class="block-update__info">Порядок:</p> <input class="block-update__input" type="text" id="gorder">
                     <p class="block-update__info">Описание:</p> <textarea class="block-update__input" id="gdescr"></textarea>
                     <input type="hidden" id="gid">
-        
+
                     <button class="add-to-db btn btn-zakaz">Обновить</button>
                 </div>
             </div>
