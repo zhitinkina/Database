@@ -27,7 +27,7 @@ function goodsOut(data) {
             out +='</div>';
 
             out +='<div class="cart__info">';
-            out +=`<p class="name"><a href="goods.html#${key}">${data[key].name}</a></p>`;
+            out +=`<p class="name"><a href="goods.php#${key}">${data[key].name}</a></p>`;
             out +=`<a class="add-to-later hearts" data-id="${key}"><img src="images/main/later.svg"></a>`;
             out +='</div>';
 
@@ -36,7 +36,7 @@ function goodsOut(data) {
             out +='<div class="cart__info">';
             out +=`<div class="cost">${data[key].cost} &#x20BD;</div>`;
             out +=`<a href="cart.html" class="cart__info-basket"><img src="images/main/basket.svg"></a>`;
-            out +=`<a href="goods.html#${key}" class="add-to-cart btn">Просмотреть</a>`;
+            out +=`<a href="goods.php#${key}" class="add-to-cart btn">Просмотреть</a>`;
             out +='</div>';
             out +='</div>';
             out +='</div>';

@@ -1,3 +1,5 @@
+// TODO: нахуй и в пизду
+
 var cart = {};
 function loadCart() {
     //проверяю есть ли в localStorage запись cart

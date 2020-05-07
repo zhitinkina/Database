@@ -18,8 +18,10 @@
 
         $dbHandler = new DbHandler(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
         $row = $dbHandler->queryGetAssoc("SELECT * FROM goods WHERE id = '$id'");
-        $row = $row[0]; // TODO: а если нет?
-        echo(json_encode($row));
+        echo(count($row)
+            ? json_encode($row[0])
+            : "0"
+        );
     }
 
     function updateGoods() {

@@ -1,3 +1,5 @@
+// TODO: нахуй и в пизду
+
 var cart = {}; // корзина
 
 function init() {
@@ -6,10 +8,10 @@ function init() {
     var hash = window.location.hash.substring(1);
     console.log(hash);
     $.post(
-        "php/admin/core.php",
+        "api.php",
         {
             "action" : "selectOneGoods",
-            "id" : hash
+            "gid" : hash
         },
         goodsOut
     );

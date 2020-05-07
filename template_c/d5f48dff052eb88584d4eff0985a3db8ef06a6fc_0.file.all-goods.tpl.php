@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2020-05-08 00:16:13
+/* Smarty version 3.1.29, created on 2020-05-08 00:51:25
   from "E:\!git\tmp\server2go\htdocs\template\all-goods.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5eb488ad5c7091_93599597',
+  'unifunc' => 'content_5eb490edc1a8b5_85072545',
   'file_dependency' => 
   array (
     'd5f48dff052eb88584d4eff0985a3db8ef06a6fc' => 
     array (
       0 => 'E:\\!git\\tmp\\server2go\\htdocs\\template\\all-goods.tpl',
-      1 => 1588889757,
+      1 => 1588891750,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.tpl' => 1,
   ),
 ),false)) {
-function content_5eb488ad5c7091_93599597 ($_smarty_tpl) {
+function content_5eb490edc1a8b5_85072545 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -83,7 +83,7 @@ $__foreach_card_0_saved_local_item = $_smarty_tpl->tpl_vars['card'];
 " alt="">
                                 </div>
                                 <div class="cart__info">
-                                    <p class="name"><a href="goods.html#<?php echo $_smarty_tpl->tpl_vars['card']->value['id'];?>
+                                    <p class="name"><a href="goods.php#<?php echo $_smarty_tpl->tpl_vars['card']->value['id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['card']->value['name'];?>
 </a></p>
                                     <a class="add-to-later hearts" data-id="<?php echo $_smarty_tpl->tpl_vars['card']->value['id'];?>

@@ -42,13 +42,13 @@
                                     <img src="images/{$card.img}" alt="">
                                 </div>
                                 <div class="cart__info">
-                                    <p class="name"><a href="goods.html#{$card.id}">{$card.name}</a></p>
+                                    <p class="name"><a href="goods.php#{$card.id}">{$card.name}</a></p>
                                     <a class="add-to-later hearts" data-id="{$card.id}"><img src="images/main/later.svg"></a>
                                 </div>
                                 <div class="cart__descr">{$card.description}</div>
                                 <div class="cart__info">
                                     <div class="cost">{$card.cost} &#x20BD;</div>
-                                    <a href="cart.html" class="cart__info-basket"><img src="images/main/basket.svg"></a>
+                                    <a href="cart.php" class="cart__info-basket"><img src="images/main/basket.svg"></a>
                                     <button class="add-to-cart btn" data-id="{$card.id}">Купить</button>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
             </div>
 
 
-            <!-- <a href="cart.html">Корзина</a>
+            <!-- <a href="cart.php">Корзина</a>
             <div class="mini-cart"></div>
             <a href="later.html">Желания</a>
             <div class="goods-out"></div> -->
