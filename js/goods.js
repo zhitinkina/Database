@@ -48,7 +48,6 @@ function addToLater() {
         // если есть - расширфровываю и записываю в переменную cart
         later = JSON.parse(localStorage.getItem('later'));
     }
-    alert('Добавлена в желания!');
     var id = $(this).attr('data-id');
     later[id] = 1;
     localStorage.setItem('later', JSON.stringify(later));

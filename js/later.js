@@ -1,9 +1,9 @@
 function init() {
     //вычитуем файл goods.json
     $.post(
-        "php/admin/core.php",
+        "api.php",
         {
-            "action" : "loadGoogs"
+            "action" : "selectGoods"
         },
         goodsOut
     );
@@ -12,7 +12,6 @@ function init() {
 function goodsOut(data) {
     // вывод на страницу
     data = JSON.parse(data);
-    console.log(data);
     var out='';
     var later = {};
     if (localStorage.getItem('later')) {
@@ -50,5 +49,5 @@ function goodsOut(data) {
 
 $(document).ready(function () {
     init();
-    loadCart();
+    // loadCart(); TODO: алло, блять! Нет здесь никаких loadCart, нахуй
 });

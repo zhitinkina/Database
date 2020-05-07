@@ -7,6 +7,9 @@
          case "selectOneGoods":
               selectOneGoods();
               break;
+         case "selectGoods":
+            selectGoods();
+            break;
          case "updateGoods":
               updateGoods();
               break;

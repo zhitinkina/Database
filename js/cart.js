@@ -1,4 +1,5 @@
 // TODO: нахуй и в пизду
+// TODO: какие ещё в жопу алерты?!
 
 var cart = {};
 function loadCart() {

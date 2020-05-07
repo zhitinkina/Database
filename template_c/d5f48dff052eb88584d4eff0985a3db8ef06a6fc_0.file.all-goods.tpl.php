@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2020-05-08 00:51:25
+/* Smarty version 3.1.29, created on 2020-05-08 01:11:14
   from "E:\!git\tmp\server2go\htdocs\template\all-goods.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5eb490edc1a8b5_85072545',
+  'unifunc' => 'content_5eb49592453a77_05128349',
   'file_dependency' => 
   array (
     'd5f48dff052eb88584d4eff0985a3db8ef06a6fc' => 
     array (
       0 => 'E:\\!git\\tmp\\server2go\\htdocs\\template\\all-goods.tpl',
-      1 => 1588891750,
+      1 => 1588893072,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.tpl' => 1,
   ),
 ),false)) {
-function content_5eb490edc1a8b5_85072545 ($_smarty_tpl) {
+function content_5eb49592453a77_05128349 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -94,7 +94,7 @@ $__foreach_card_0_saved_local_item = $_smarty_tpl->tpl_vars['card'];
                                 <div class="cart__info">
                                     <div class="cost"><?php echo $_smarty_tpl->tpl_vars['card']->value['cost'];?>
  &#x20BD;</div>
-                                    <a href="cart.html" class="cart__info-basket"><img src="images/main/basket.svg"></a>
+                                    <a href="cart.php" class="cart__info-basket"><img src="images/main/basket.svg"></a>
                                     <button class="add-to-cart btn" data-id="<?php echo $_smarty_tpl->tpl_vars['card']->value['id'];?>
 ">Купить</button>
                                 </div>
@@ -111,9 +111,9 @@ $_smarty_tpl->tpl_vars['card'] = $__foreach_card_0_saved_item;
             </div>
 
 
-            <!-- <a href="cart.html">Корзина</a>
+            <!-- <a href="cart.php">Корзина</a>
             <div class="mini-cart"></div>
-            <a href="later.html">Желания</a>
+            <a href="later.php">Желания</a>
             <div class="goods-out"></div> -->
         </main>
         <footer class="footer"></footer>

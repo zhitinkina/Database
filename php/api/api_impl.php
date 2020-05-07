@@ -13,6 +13,11 @@
         return $conn;
     }
 
+    function selectGoods() {
+        $dbHandler = new DbHandler(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+        echo(json_encode($dbHandler->queryGetAssoc("SELECT * FROM goods")));
+    }
+
     function selectOneGoods() {
         $id = Request::getFromPost("gid");
 

@@ -60,7 +60,7 @@
 
             <!-- <a href="cart.php">Корзина</a>
             <div class="mini-cart"></div>
-            <a href="later.html">Желания</a>
+            <a href="later.php">Желания</a>
             <div class="goods-out"></div> -->
         </main>
         <footer class="footer"></footer>
