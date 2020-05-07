@@ -15,6 +15,8 @@ INSERT INTO `manufacturer` (`id_manufacturer`, `name`, `description`) VALUES
 (3, '"ЧИСТАЯ ЛИНИЯ"', '"ЧИСТАЯ ЛИНИЯ" - Это уникальная косметика на основе натуральных экстрактов российских трав. Опыт и научные исследования компании позволяют открывать уникальные свойства российских трав для защиты и сохранения красоты и здоровья кожи и волос.'),
 (4, 'Estel (Эстель)', 'Estel (Эстель) - российский производитель профессиональной косметики для волос.');
 
+ALTER TABLE `manufacturer` ADD FOREIGN KEY ( `id_manufacturer` ) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+
 
 CREATE TABLE IF NOT EXISTS `product` (
   `id_product` int(4) NOT NULL AUTO_INCREMENT,
@@ -56,6 +58,8 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`id_category`)
 ) TYPE=MyISAM  AUTO_INCREMENT=4 ;
 
+ALTER TABLE `category` ADD FOREIGN KEY ( `id_category` ) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
 INSERT INTO `category` (`id_category`, `name`) VALUES
 (1, 'Лицо'),
 (2, 'Волосы'),
@@ -73,7 +77,6 @@ INSERT INTO `permission` (`id_permission`, `name`) VALUES
 (1, 'Разрешение есть'),
 (2, 'Разрешения нет');
 
-
 CREATE TABLE IF NOT EXISTS `customer` (
   `id_customer` int(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -87,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
 INSERT INTO `customer` (`id_customer`, `name`, `login`, `password`, `email`, `id_permission`) VALUES
 (1, 'Никитос', 'Nekit123', '123456', 'Nekit123.com', '1');
 
+ALTER TABLE `permission` ADD FOREIGN KEY ( `id_permission` ) REFERENCES `customer` (`id_customer`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
 
 CREATE TABLE IF NOT EXISTS `status` (
   `id_status` int(4) NOT NULL AUTO_INCREMENT,
@@ -110,13 +114,18 @@ CREATE TABLE IF NOT EXISTS `basket` (
 INSERT INTO `basket` (`id_basket`, `id_customer`, `date`, `id_status`) VALUES
 (1, 1, '07.05.2020', 1);
 
+ALTER TABLE `status` ADD FOREIGN KEY ( `id_status` ) REFERENCES `basket` (`id_basket`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+ALTER TABLE `customer` ADD FOREIGN KEY ( `id_customer` ) REFERENCES `basket` (`id_basket`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
 
-CREATE TABLE `order` ( 
-  `id_basket` int(10) NOT NULL AUTO_INCREMENT , 
-  `id_product` int(10) NOT NULL AUTO_INCREMENT , 
-  `quantity` int(10) NOT NULL , 
-  PRIMARY KEY (`id_basket`, `id_product`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+CREATE TABLE `order` (
+`id_basket` int(4) NOT NULL ,
+`id_product` int(4) NOT NULL ,
+`quantity` int NOT NULL ,
+PRIMARY KEY ( `id_basket` , `id_product` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `order` (`id_basket`, `id_product`, `quantity`) VALUES
 (1, 2, 2);
+
+ALTER TABLE `basket` ADD FOREIGN KEY ( `id_basket` ) REFERENCES `order` (`id_basket`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+ALTER TABLE `product` ADD FOREIGN KEY ( `id_product` ) REFERENCES `order` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
