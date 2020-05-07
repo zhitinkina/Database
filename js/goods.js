@@ -8,7 +8,7 @@ function init() {
     $.post(
         "php/admin/core.php",
         {
-            "action" : "loadSingleGoods", 
+            "action" : "selectOneGoods",
             "id" : hash
         },
         goodsOut

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2020-05-07 01:03:43
+/* Smarty version 3.1.29, created on 2020-05-07 15:03:21
   from "E:\!git\tmp\server2go\htdocs\template\all-goods.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5eb3424f624cd0_83932311',
+  'unifunc' => 'content_5eb40719cd96a9_38594958',
   'file_dependency' => 
   array (
     'd5f48dff052eb88584d4eff0985a3db8ef06a6fc' => 
     array (
       0 => 'E:\\!git\\tmp\\server2go\\htdocs\\template\\all-goods.tpl',
-      1 => 1588806222,
+      1 => 1588806969,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5eb3424f624cd0_83932311 ($_smarty_tpl) {
+function content_5eb40719cd96a9_38594958 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -34,7 +34,7 @@ function content_5eb3424f624cd0_83932311 ($_smarty_tpl) {
     <body class="page-info">
         <header class="header-goods">
             <div class="wrapper header__wrap">
-            <div class="header__logo"><a href="index.html"><img src="images/main/logo.svg" alt="company"></a></div>
+            <div class="header__logo"><a href="index.php"><img src="images/main/logo.svg" alt="company"></a></div>
             <nav class="header__nav">
                 <div class="header__right"><a href="all-goods.html" class="btn btn--category">Товары</a></div>
                 <a href="later.html"> <img src="images/main/heart.svg"></a>

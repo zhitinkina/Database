@@ -1,7 +1,7 @@
 function selectGoods() {
     var id = $('.goods-out select option:selected').attr('data-id');
     $.post(
-        "core.php",
+        "../../api.php",
         {
             "action" : "selectOneGoods",
             "gid" : id
@@ -21,9 +21,9 @@ function selectGoods() {
 function saveToDb() {
     var id = $('#gid').val();
     $.post(
-        "../php/admin/core.php",
+        "../../api.php",
         {
-            "action" : id ? "updateGoogs" : "newGoogs",
+            "action" : id ? "updateGoods" : "newGoods",
             "id" : id ? id : 0,
             "gname" : $('#gname').val(),
             "gcost" : $('#gcost').val(),
@@ -32,12 +32,7 @@ function saveToDb() {
             "gimg" : $('#gimg').val()
         },
         function(data) {
-            if (data == 1) {
-                location.reload();
-            }
-            else {
-                console.log(data);
-            }
+            location.reload();
         }
     );
 }
