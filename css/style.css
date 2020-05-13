@@ -183,3 +183,79 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   color: #000;
   padding: 7px 10px;
 }
+
+
+.user-login__block {
+  display: flex;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.08);
+  padding: 50px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-login {
+  width: 100%;
+  float: left;
+}
+
+.user-login__label {
+  display: inline-block;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  clear: both;
+  display: flex;
+  border: 1px solid #7686de;
+  position: relative;
+  margin-bottom: 25px;
+  color: #0C21D6;
+}
+
+.user-login__label span {
+  float: left;
+  padding: 0 0 0 1em;
+  white-space: nowrap;
+}
+
+.input {
+  font-weight: 600;
+  float: left;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  padding: 0 1em;
+}
+
+input[type="text"], input[type="search"], input[type="number"], input[type="password"], input[type="email"], select {
+  height: 48px;
+  line-height: 50px;
+  padding: 0 1em;
+  outline:none;
+}
+
+.user-login__label:focus-within {
+  border: 1px solid #ffb000;
+}
+
+input[type="text"], input[type="search"], input[type="number"], input[type="password"], input[type="email"], textarea, select {
+  font-family: 'Poppins';
+  color: #222222;
+  font-size: 14px;
+  border-radius: 0;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  border: 1px solid transparent;
+}
+
+.registration {
+  color: #7686de;
+  font-size: 16px;
+}

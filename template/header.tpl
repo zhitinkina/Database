@@ -9,7 +9,7 @@
         <a href="later.php"><img src="images/main/heart.svg"></a>
         <a href="cart.php"><img src="images/main/basket.svg"></a>
         <div class="header__right">
-            <a href="#" class="btn">Вход</a>
+            <a href="user-login.php" class="btn">Вход</a>
         </div>
     </nav>
 </div>
