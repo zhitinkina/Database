@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Все товары" %}
+        {% include "head.html" %}
+    {% endwith %}
+
+    <body class="page-info">
+        <header class="header-goods">
+            {% with bla="Категории" %}
+                {% include "header.html" %}
+            {% endwith %}
+        </header>
+
+        <main class="main-block">
+            <div class="wrapper">
+            <!-- <div class="mini-cart"></div> -->
+
+            <!-- <div class="cart">
+            <p class="name">Цветы</p>
+            <img src="images/grape.png" alt="">
+            <div class="cost">500</div>
+            <button class="add-to-cart">Купить</button>
+            </div> -->
+            <div class="goods-out"></div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+        <script src={{ url_for("static", filename="js/goods.js") }}></script>
+    </body>
+</html>

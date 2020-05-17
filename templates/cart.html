@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Корзина" %}
+        {% include "head.html" %}
+    {% endwith %}
+    <body class="page-info">
+        <header class="header-goods">
+            {% with bla="Корзина" %}
+                {% include "header.html" %}
+            {% endwith %}
+        </header>
+        <main class="main-block main-block--cart">
+            <div class="wrapper">
+                <div class="wrapper__one">
+                    <div class="main-cart"></div>
+                </div>
+                <div class="wrapper__two">
+                    <div class="itogo">
+                        <div class="itogo-block">
+                            <h1 class="itogo-block__heading">Cумма заказа:</h1>
+                            <div class="cost-good">567 рублей ????</div>
+                            <button class="btn btn-zakaz">Оформить заказ</button>
+                        </div>
+                        <div id="email-field" class="email-field">
+                            <label>Имя:<input type="text" id="ename"></label>
+                            <label>Email:<input type="text" id="email"></label>
+                            <label>Телефон:<input type="text" id="ephone"></label>
+                            <label><button class="send-email">Заказать</button></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+        <script src={{ url_for("static", filename="js/cart.js") }}></script>
+    </body>
+</html>

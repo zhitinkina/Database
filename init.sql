@@ -1,131 +1,201 @@
-CREATE DATABASE `shop` CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE shop
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
 
-USE `shop`;
+CREATE TABLE public.manufacturer
+(
+    manufacturer_id SERIAL,
+    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    description text COLLATE pg_catalog."default",
+    CONSTRAINT manufacturer_pkey PRIMARY KEY (manufacturer_id),
+    CONSTRAINT manufacturer_name_key UNIQUE (name)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-CREATE TABLE IF NOT EXISTS `manufacturer` (
-  `id_manufacturer` int(4) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `description` text,
-  PRIMARY KEY (`id_manufacturer`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+ALTER TABLE public.manufacturer
+    OWNER to postgres;
 
-INSERT INTO `manufacturer` (`id_manufacturer`, `name`, `description`) VALUES
-(1, 'Vivienne Sabo', 'Vivienne Sabo -марка с романтичной парижской душой, дарит ощущения весеннего Парижа, современная и классическая, интригующая и демократичная. При создании косметических продуктов марки Vivienne Sabo используются самые современные текстуры и формулы Аромат свежих цветов фиалки, украшающих коллекцию, дарит ощущение весеннего Парижа.'),
-(2, 'Maybelline New York', 'Maybelline New York - бренд макияжа №1 в России. Это бренд, вдохновленный духом Нью-Йорка и несущий в себе такие ценности как: красота, мода, неограниченные возможности, инновации и доступность. Косметика Maybelline NY - отличный способ самовыражения. Это современный бренд, который тонко чувствует актуальные тенденции, но при этом имеет 100-летнюю историю.'),
-(3, '"ЧИСТАЯ ЛИНИЯ"', '"ЧИСТАЯ ЛИНИЯ" - Это уникальная косметика на основе натуральных экстрактов российских трав. Опыт и научные исследования компании позволяют открывать уникальные свойства российских трав для защиты и сохранения красоты и здоровья кожи и волос.'),
-(4, 'Estel (Эстель)', 'Estel (Эстель) - российский производитель профессиональной косметики для волос.');
+CREATE TABLE public.basket_status
+(
+    basket_status_id SMALLSERIAL,
+    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT order_status_pkey PRIMARY KEY (basket_status_id),
+    CONSTRAINT basket_status_name_key UNIQUE (name)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-ALTER TABLE `manufacturer` ADD FOREIGN KEY ( `id_manufacturer` ) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+ALTER TABLE public.basket_status
+    OWNER to postgres;
 
+CREATE TABLE public.category
+(
+    category_id SMALLSERIAL,
+    name character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT category_pkey PRIMARY KEY (category_id),
+    CONSTRAINT category_name_key UNIQUE (name)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-CREATE TABLE IF NOT EXISTS `product` (
-  `id_product` int(4) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `cost` int(11) DEFAULT NULL,
-  `description` text,
-  `id_category` int(3) DEFAULT NULL,
-  `img` text,
-  `color` text,
-  `valume` int(3),
-  `id_manufacturer` int(3) DEFAULT NULL,
-  PRIMARY KEY (`id_product`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+ALTER TABLE public.category
+    OWNER to postgres;
 
-INSERT INTO `product` (`id_product`, `name`, `cost`, `description`, `id_category`, `img`, `color`, `valume`, `id_manufacturer`) VALUES
-(1, 'Vivienne Sabo Тушь', 300, 'Тушь для ресниц супер-объемная, со сценическим эффектом', 1, 'ink.jpg', 'черная', '100', 1),
-(2, 'Палетка теней', 882, 'Палетка теней Rimmel Magnif''Eyes Blush', 1, 'pallete.jpg', 'черная', '100', 1),
-(3, 'Губная помада-тинт', 1000, 'L`Oreal Paris Rouge Signature, матовый, "Я протестую", красный', 1, 'lips.jpg', 'черная', '100', 1),
-(4, 'Vivienne Sabo Тушь', 296, 'Тушь для ресниц со сценическим эффектом "Cabaret premiere"', 1, 'ink2.jpg', 'черная', '100', 1),
-(5, 'DIVAGE Румяна', 271, 'Румяна компактные "VELVET"', 1, 'brash1.jpg', 'черная', '100', 1),
-(6, 'Relouis Помада', 345, 'Помада губная La Mia Italia', 1, 'lips2.jpg', 'черная', '100', 1),
+CREATE TABLE public.role
+(
+    role_id SMALLSERIAL,
+    name character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT role_pkey PRIMARY KEY (role_id),
+    CONSTRAINT role_name_key UNIQUE (name)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-(7, 'Matrix Шампунь', 1100, 'Шампунь для волос Total Results So Silver, для нейтрализации желтизны', 2, 'shampoo.jpg', 'черная', '100', 1),
-(8, 'Бигуди-бумеранги', 235, 'Harizma Бигуди-бумеранги 22x240 мм 10 шт h10983-22, зелёные', 2, 'hair-curlers.jpg', 'черная', '100', 1),
-(9, 'Расческа Tangle Teezer', 1288, 'Щетка для волос', 2, 'hairbrush.jpg', 'черная', '100', 1),
+ALTER TABLE public.role
+    OWNER to postgres;
 
-(10, 'Лак для ногтей', 570, 'Kinetics SolarGel Polish тон 200, 15 мл', 3, 'varnish2.jpg', 'черная', '100', 1),
-(11, 'Быстрая сушка лака', 212, 'Super Fast Drying, 11 мл.', 3, 'varnish.jpg', 'черная', '100', 1),
-(12, 'Слайдер-дизайн', 345, 'Слайдер-дизайн Пары линии, sd1-1567 в наборе', 3, 'varnish-nabor.jpg', 'черная', '100', 1),
+CREATE TABLE public."user"
+(
+    user_id BIGSERIAL,
+    login character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(32) COLLATE pg_catalog."default" NOT NULL,
+    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    role_id smallint NOT NULL,
+    CONSTRAINT user_pkey PRIMARY KEY (user_id),
+    CONSTRAINT user_email_key UNIQUE (email),
+    CONSTRAINT user_login_key UNIQUE (login),
+    CONSTRAINT user_role_id_fkey FOREIGN KEY (role_id)
+        REFERENCES public.role (role_id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-(13, 'Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 3, 'cream.jpg', 'черная', '100', 1),
-(14, 'Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 3, 'highlighter.jpg', 'черная', '100', 1),
-(15, 'Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 3, 'brush.jpg', 'черная', '100', 1);
+ALTER TABLE public."user"
+    OWNER to postgres;
 
+CREATE TABLE public.basket
+(
+    basket_id BIGSERIAL,
+    user_id bigint NOT NULL,
+    basket_status_id smallint NOT NULL,
+    CONSTRAINT basket_pkey PRIMARY KEY (basket_id),
+    CONSTRAINT basket_basket_status_id_fkey FOREIGN KEY (basket_status_id)
+        REFERENCES public.basket_status (basket_status_id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT,
+    CONSTRAINT basket_user_id_fkey FOREIGN KEY (user_id)
+        REFERENCES public."user" (user_id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-CREATE TABLE IF NOT EXISTS `category` (
-  `id_category` int(4) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_category`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+ALTER TABLE public.basket
+    OWNER to postgres;
 
-ALTER TABLE `category` ADD FOREIGN KEY ( `id_category` ) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+CREATE TABLE public.product
+(
+    product_id SERIAL,
+    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    cost money NOT NULL,
+    description text COLLATE pg_catalog."default",
+    category_id smallint NOT NULL,
+    img character varying(256) COLLATE pg_catalog."default",
+    color character varying(50) COLLATE pg_catalog."default",
+    volume smallint,
+    manufacturer_id bigint NOT NULL,
+    CONSTRAINT product_pkey PRIMARY KEY (product_id),
+    CONSTRAINT product_name_key UNIQUE (name),
+    CONSTRAINT product_category_id_fkey FOREIGN KEY (category_id)
+        REFERENCES public.category (category_id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT,
+    CONSTRAINT product_manufacturer_id_fkey FOREIGN KEY (manufacturer_id)
+        REFERENCES public.manufacturer (manufacturer_id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-INSERT INTO `category` (`id_category`, `name`) VALUES
-(1, 'Лицо'),
-(2, 'Волосы'),
-(3, 'Ногти'),
-(4, 'Тело');
+ALTER TABLE public.product
+    OWNER to postgres;
 
+CREATE TABLE public."order"
+(
+    basket_id bigint NOT NULL,
+    product_id bigint NOT NULL,
+    quantity smallint NOT NULL,
+    CONSTRAINT order_pkey PRIMARY KEY (basket_id, product_id),
+    CONSTRAINT order_product_id_fkey FOREIGN KEY (product_id)
+        REFERENCES public.product (product_id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
 
-CREATE TABLE IF NOT EXISTS `permission` (
-  `id_permission` int(4) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_permission`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+ALTER TABLE public."order"
+    OWNER to postgres;
 
-INSERT INTO `permission` (`id_permission`, `name`) VALUES
-(1, 'Разрешение есть'),
-(2, 'Разрешения нет');
+INSERT INTO public."manufacturer" (name, description) VALUES
+('Vivienne Sabo', 'Vivienne Sabo -марка с романтичной парижской душой, дарит ощущения весеннего Парижа, современная и классическая, интригующая и демократичная. При создании косметических продуктов марки Vivienne Sabo используются самые современные текстуры и формулы Аромат свежих цветов фиалки, украшающих коллекцию, дарит ощущение весеннего Парижа.'),
+('Maybelline New York', 'Maybelline New York - бренд макияжа №1 в России. Это бренд, вдохновленный духом Нью-Йорка и несущий в себе такие ценности как: красота, мода, неограниченные возможности, инновации и доступность. Косметика Maybelline NY - отличный способ самовыражения. Это современный бренд, который тонко чувствует актуальные тенденции, но при этом имеет 100-летнюю историю.'),
+('"ЧИСТАЯ ЛИНИЯ"', '"ЧИСТАЯ ЛИНИЯ" - Это уникальная косметика на основе натуральных экстрактов российских трав. Опыт и научные исследования компании позволяют открывать уникальные свойства российских трав для защиты и сохранения красоты и здоровья кожи и волос.'),
+('Estel (Эстель)', 'Estel (Эстель) - российский производитель профессиональной косметики для волос.');
 
-CREATE TABLE IF NOT EXISTS `customer` (
-  `id_customer` int(4) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `login` varchar(50) DEFAULT NULL,
-  `password` int(25) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `id_permission` int(3) DEFAULT NULL,
-  PRIMARY KEY (`id_customer`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+INSERT INTO public."basket_status" (name) VALUES
+('В процессе'),
+('Оплачено');
 
-INSERT INTO `customer` (`id_customer`, `name`, `login`, `password`, `email`, `id_permission`) VALUES
-(1, 'Никитос', 'Nekit123', '123456', 'Nekit123.com', '1');
+INSERT INTO public."category" (name) VALUES
+('Лицо'),
+('Волосы'),
+('Ногти'),
+('Тело');
 
-ALTER TABLE `permission` ADD FOREIGN KEY ( `id_permission` ) REFERENCES `customer` (`id_customer`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+INSERT INTO public."role" (name) VALUES
+('Администратор'),
+('Пользователь');
 
-CREATE TABLE IF NOT EXISTS `status` (
-  `id_status` int(4) NOT NULL AUTO_INCREMENT,
-  `value` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_status`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
-
-INSERT INTO `status` (`id_status`, `value`) VALUES
-(1, 'В процессе'),
-(2, 'Оплачено');
-
-
-CREATE TABLE IF NOT EXISTS `basket` (
-  `id_basket` int(4) NOT NULL AUTO_INCREMENT,
-  `id_customer` int(3) DEFAULT NULL,
-  `date`date,
-  `id_status` int(3) DEFAULT NULL,
-  PRIMARY KEY (`id_basket`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
-
-INSERT INTO `basket` (`id_basket`, `id_customer`, `date`, `id_status`) VALUES
-(1, 1, '07.05.2020', 1);
-
-ALTER TABLE `status` ADD FOREIGN KEY ( `id_status` ) REFERENCES `basket` (`id_basket`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
-ALTER TABLE `customer` ADD FOREIGN KEY ( `id_customer` ) REFERENCES `basket` (`id_basket`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
-
-CREATE TABLE `order` (
-`id_basket` int(4) NOT NULL ,
-`id_product` int(4) NOT NULL ,
-`quantity` int NOT NULL ,
-PRIMARY KEY ( `id_basket` , `id_product` )
-) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
-
-INSERT INTO `order` (`id_basket`, `id_product`, `quantity`) VALUES
-(1, 2, 2);
-
-ALTER TABLE `basket` ADD FOREIGN KEY ( `id_basket` ) REFERENCES `order` (`id_basket`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
-ALTER TABLE `product` ADD FOREIGN KEY ( `id_product` ) REFERENCES `order` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+INSERT INTO public."product" (name, cost, description, category_id, img, color, volume, manufacturer_id) VALUES
+('Vivienne Sabo Тушь', 300, 'Тушь для ресниц супер-объемная, со сценическим эффектом', 1, 'ink.jpg', 'черная', '100', 1),
+('Палетка теней', 882, 'Палетка теней Rimmel Magnif''Eyes Blush', 1, 'pallete.jpg', 'черная', '100', 1),
+('Губная помада-тинт', 1000, 'L`Oreal Paris Rouge Signature, матовый, "Я протестую", красный', 1, 'lips.jpg', 'черная', '100', 1),
+('DIVAGE Румяна', 271, 'Румяна компактные "VELVET"', 1, 'brash1.jpg', 'черная', '100', 1),
+('Relouis Помада', 345, 'Помада губная La Mia Italia', 1, 'lips2.jpg', 'черная', '100', 1),
+('Matrix Шампунь', 1100, 'Шампунь для волос Total Results So Silver, для нейтрализации желтизны', 2, 'shampoo.jpg', 'черная', '100', 1),
+('Бигуди-бумеранги', 235, 'Harizma Бигуди-бумеранги 22x240 мм 10 шт h10983-22, зелёные', 2, 'hair-curlers.jpg', 'черная', '100', 1),
+('Расческа Tangle Teezer', 1288, 'Щетка для волос', 2, 'hairbrush.jpg', 'черная', '100', 1),
+('Лак для ногтей', 570, 'Kinetics SolarGel Polish тон 200, 15 мл', 3, 'varnish2.jpg', 'черная', '100', 1),
+('Быстрая сушка лака', 212, 'Super Fast Drying, 11 мл.', 3, 'varnish.jpg', 'черная', '100', 1),
+('Слайдер-дизайн', 345, 'Слайдер-дизайн Пары линии, sd1-1567 в наборе', 3, 'varnish-nabor.jpg', 'черная', '100', 1),
+('Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 3, 'cream.jpg', 'черная', '100', 1),
+('Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 3, 'highlighter.jpg', 'черная', '100', 1),
+('Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 3, 'brush.jpg', 'черная', '100', 1);

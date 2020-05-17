@@ -1,0 +1,23 @@
+<div class="wrapper header__wrap">
+    <div class="header__logo">
+        <a href="index"><img src={{ url_for("static", filename="images/main/logo.svg") }}></a>
+    </div>
+    <nav class="header__nav">
+        <div class="header__right">
+            <a href="all_goods" class="btn btn--category">Товары</a>
+        </div>
+        <a href="later"><img src={{ url_for("static", filename="images/main/heart.svg") }}></a>
+        <a href="cart"><img src={{ url_for("static", filename="images/main/basket.svg") }}></a>
+        <div class="header__right">
+            <a href="login" class="btn">Вход</a>
+        </div>
+    </nav>
+</div>
+
+{% if bla %}
+    <div class="title__block">
+        <div class="wrapper">
+            <h1>{{ bla }}</h1>
+        </div>
+    </div>
+{% endif %}

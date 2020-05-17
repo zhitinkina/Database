@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Желания" %}
+        {% include "head.html" %}
+    {% endwith %}
+    <body class="page-info">
+        <header class="header-goods">
+            {% with bla="Желания" %}
+                {% include "header.html" %}
+            {% endwith %}
+        </header>
+        <main class="main-block main-block--cart">
+            <div class="wrapper">
+                <div class="goods-out"></div>
+            </div>
+        </main>
+        <!-- <footer class="footer"></footer> -->
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+        <script src={{ url_for("static", filename="js/later.js") }}></script>
+    </body>
+</html>

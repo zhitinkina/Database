@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Администратор" %}
+        {% include "head.html" %}
+    {% endwith %}
+    <body class="page-info">
+        <header class="header-goods">
+            {% with bla="Для админа" %}
+                {% include "header.html" %}
+            {% endwith %}
+        </header>
+        <main class="main-block">
+            <div class="wrapper">
+                <div class="block-update">
+                    <div class="goods-out">
+                        <select class="select-goods">
+                            <option data-id="0">Новый товар</option>
+                            {% for category in categories %}
+                                <option data-id="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
+                    <label class="block-update__info">Стоимость:<input class="block-update__input" type="text" id="gcost"></label>
+                    <label class="block-update__info">Изображение:<input class="block-update__input" type="text" id="gimg"></label>
+                    <label class="block-update__info">Порядок:<input class="block-update__input" type="text" id="gorder"></label>
+                    <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
+                    <input type="hidden" id="gid">
+                    <button class="add-to-db btn btn-zakaz">Обновить</button>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+        <script src={{ url_for("static", filename="js/admin.js") }}></script>
+    </body>
+</html>

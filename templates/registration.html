@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Регистрация" %}
+        {% include "head.html" %}
+    {% endwith %}
+    <body class="page-info">
+        <header class="header-goods">
+            {% with bla="Регистрация" %}
+                {% include "header.html" %}
+            {% endwith %}
+        </header>
+        <main class="main-block">
+            <div class="wrapper">
+                <div class="registration__block">
+                    <form class="user-login" action="api/register" method="POST">
+                        <label for="name" class="registration__label">Имя<input name="name" class="input" type="text"></label>
+                        <label for="login" class="registration__label">Логин<input name="login" class="input" type="text"></label>
+                        <label for="password" class="registration__label">Пароль<input name="password" class="input" type="password"></label>
+                        <label for="email" class="registration__label">Почта<input name="email" class="input" type="email"></label>
+                        <button type="submit" class="registration__button registration__button-label">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+    </body>
+</html>

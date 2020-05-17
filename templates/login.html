@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Вход" %}
+        {% include "head.html" %}
+    {% endwith %}
+    <body class="page-info">
+        <header class="header-goods">
+            <header class="header">
+                {% with bla="Вход" %}
+                    {% include "header.html" %}
+                {% endwith %}
+            </header>
+        </header>
+        <main class="main-block">
+            <div class="wrapper">
+                <div class="user-login__block">
+                    <form class="user-login" action="api/login" method="POST">
+                        <label for="login" class="user-login__label">Логин<input name="login" class="input" type="text"></label>
+                        <label for="password" class="user-login__label">Пароль<input name="password" class="input" type="password"></label>
+                        <button type="submit" class="user-login__button">Войти</button>
+                        <a href="registration" class="registration">Вы еще не зарегистрировались?</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+    </body>
+</html>
