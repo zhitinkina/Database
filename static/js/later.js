@@ -1,12 +1,4 @@
 function init() {
-    //вычитуем файл goods.json
-    $.post(
-        "api.php",
-        {
-            "action" : "selectGoods"
-        },
-        goodsOut
-    );
 }
 
 function goodsOut(data) {
@@ -49,5 +41,4 @@ function goodsOut(data) {
 
 $(document).ready(function () {
     init();
-    // loadCart(); TODO: алло, блять! Нет здесь никаких loadCart, нахуй
 });

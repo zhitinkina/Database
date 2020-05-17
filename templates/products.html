@@ -43,7 +43,7 @@
                                     <img src={{ url_for("static", filename="images/" + card.img) }}>
                                 </div>
                                 <div class="cart__info">
-                                    <p class="name"><a href="goods#{{ card.id }}">{{ card.name }}</a></p>
+                                    <p class="name"><a href="product/{{ card.id }}">{{ card.name }}</a></p>
                                     <a class="add-to-later hearts" data-id="{{ card.id }}"><img src={{ url_for("static", filename="images/main/later.svg") }}></a>
                                 </div>
                                 <div class="cart__descr">{{ card.description }}</div>

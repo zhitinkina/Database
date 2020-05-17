@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager, login_required
 
 from src.database import fetch_all_from_db
@@ -34,9 +34,9 @@ def login():
 	return render_template("login.html")
 
 
-@app.route("/registration")
-def registration():
-	return render_template("registration.html")
+@app.route("/signup")
+def signup():
+	return render_template("signup.html")
 
 
 @app.route("/later")
@@ -44,14 +44,23 @@ def later():
 	return render_template("later.html")
 
 
-@app.route("/goods")
-def goods():
-	return render_template("goods.html")
+@app.route("/product/<id>")
+def product(id):
+	try:
+		row = fetch_all_from_db('SELECT product_id, name, cost, img FROM public."product" WHERE product_id=%s', (id,))[0]
+		return render_template("product.html", product={
+			"id": row[0],
+			"name": row[1],
+			"cost": row[2],
+			"img": row[3],
+		})
+	except Exception as ex:
+		return redirect(url_for("products"))
 
 
-@app.route("/all_goods")
-def all_goods():
-	return render_template("all_goods.html", cards=[{
+@app.route("/products")
+def products():
+	return render_template("products.html", cards=[{
 		"id": row[0],
 		"name": row[1],
 		"cost": row[2],

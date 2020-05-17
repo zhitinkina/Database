@@ -8,7 +8,7 @@ from src.User import User
 app = Blueprint("app", __name__)
 
 
-@app.route("/api/register", methods=["POST"])
+@app.route("/api/signup", methods=["POST"])
 def api_register():
 	from psycopg2 import IntegrityError, errorcodes
 
