@@ -21,9 +21,24 @@
                         </select>
                     </div>
                     <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
-                    <label class="block-update__info">Стоимость:<input class="block-update__input" type="text" id="gcost"></label>
-                    <label class="block-update__info">Изображение:<input class="block-update__input" type="text" id="gimg"></label>
-                    <label class="block-update__info">Порядок:<input class="block-update__input" type="text" id="gorder"></label>
+                    <label class="block-update__info">Стоимость:<input class="block-update__input" type="number" id="gcost"></label>
+                    <label class="block-update__info">Изображение:<input class="block-update__input" type="image" id="gimg"></label>
+                    <label class="block-update__info">Категория:
+                        <select class="block-update__input">
+                            {% for category in categories %}
+                                <option data-id="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <label class="block-update__info">Цвет:<input class="block-update__input" type="color" id="gcolor"></label>
+                    <label class="block-update__info">Объем:<input class="block-update__input" type="number" id="gvolume"></label>
+                    <label class="block-update__info">Производитель:
+                        <select class="block-update__input">
+                            {% for category in categories %}
+                                <option data-id="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
                     <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
                     <input type="hidden" id="gid">
                     <button class="add-to-db btn btn-zakaz">Обновить</button>
