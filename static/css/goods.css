@@ -74,8 +74,8 @@
 
 .goods-out {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 -10px 0 0;
 }
 
 .cart__img {
@@ -101,11 +101,12 @@
 
 
 .cart {
-    width: 375px;
+    width: calc((99.9% / 3) - (40px / 3));
     display: flex;
     flex-direction: column;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 40px;
+    margin: 15px 6px;
+
 }
 .name a, .name{
     font-size: 25px;
