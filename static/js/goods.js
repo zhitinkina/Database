@@ -1,7 +1,5 @@
-var cart = {};
-
 function init() {
-    $('.add-to-cart').on('click', addToCart);
+    $(".add-to-cart").on("click", addToCart);
 }
 
 function addToCart() {}

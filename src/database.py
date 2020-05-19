@@ -16,13 +16,14 @@ def config(filename="database.ini", section="postgresql"):
     return db
 
 
-def fetch_all_from_db(sql, params=None):
+def db_fetch_all(sql, params=None):
     conn = None
     try:
         conn = psycopg2.connect(**config())
         cur = conn.cursor()
         cur.execute(sql, params)
         result = cur.fetchall()
+        conn.commit()
         cur.close()
         return result
     except BaseException as ex:
@@ -32,7 +33,7 @@ def fetch_all_from_db(sql, params=None):
             conn.close()
 
 
-def insert_into_db(sql, params):
+def db_execute(sql, params):
     conn = None
     try:
         conn = psycopg2.connect(**config())

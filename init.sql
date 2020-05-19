@@ -199,3 +199,35 @@ INSERT INTO public."product" (name, cost, description, category_id, img, color, 
 ('Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 3, 'cream.jpg', 'черная', '100', 1),
 ('Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 3, 'highlighter.jpg', 'черная', '100', 1),
 ('Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 3, 'brush.jpg', 'черная', '100', 1);
+
+CREATE FUNCTION get_basket_id_or_create(u_id BIGINT) RETURNS BIGINT AS $$
+DECLARE
+	b_id BIGINT;
+BEGIN
+	SELECT basket_id INTO b_id FROM basket WHERE user_id=u_id AND basket_status_id=1;
+	IF b_id ISNULL THEN
+	    INSERT INTO basket (user_id, basket_status_id) VALUES (u_id, 1);
+		SELECT basket_id INTO b_id FROM basket WHERE user_id=u_id AND basket_status_id=1;
+	END IF;
+	RETURN b_id;
+END $$
+LANGUAGE PLPGSQL;
+
+CREATE FUNCTION patch_order(b_id BIGINT, p_id BIGINT, delta SMALLINT) RETURNS VOID AS  $$
+DECLARE
+    curr_quantity smallint = (SELECT quantity FROM public."order" WHERE basket_id=b_id AND product_id=p_id);
+BEGIN
+    IF curr_quantity ISNULL THEN
+        IF delta <= 0 THEN
+            RAISE 'Order cannot be initialized with negative quantity, got %s', delta;
+        END IF;
+        INSERT INTO public."order" (basket_id, product_id, quantity) VALUES (b_id, p_id, delta);
+    ELSE
+        IF (curr_quantity + delta) > 0 THEN
+            UPDATE public."order" SET quantity = curr_quantity + delta WHERE basket_id=b_id AND product_id=p_id;
+        ELSE
+            DELETE FROM public."order" WHERE basket_id=b_id AND product_id=p_id;
+        END IF;
+    END IF;
+END $$
+LANGUAGE PLPGSQL;
