@@ -16,14 +16,13 @@
                         {% for product in products %}
                             <div class="cart-basket">
                                 <div class="cart-basket--img">
-                                    <img src={{ url_for("static", filename="images/" + product.img) }}>
+                                    <a href="/product/{{ product.id }}"><img src={{ url_for("static", filename="images/" + product.img) }}></a>
                                 </div>
                                 <div class="cart-basket--info">
                                     <div class="cart-basket--name">
-                                        <p class="name">{{ product.name }}</p>
+                                        <a href="/product/{{ product.id }}" class="name">{{ product.name }}</a>
                                         <button data-id="{{ product.id }}" class="btn--delete del-goods">x</button>
                                     </div>
-
                                     <div class="cart-basket--cost">
                                         <div class="cost">{{ product.cost }}</div>
                                         <div class="cart-basket--operation">
