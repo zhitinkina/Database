@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   $(".btn-zakaz").click(() => $.post("/api/pay_cart"));
+   $(".btn-zakaz").click(() => $.post("/api/pay_cart", () => window.location.reload()));
    $(".decrease-product-quantity").click(function() {
        $.post(`/api/change_product_quantity/${$(this).attr("data-id")}/-1`);
    });

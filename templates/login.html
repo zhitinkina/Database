@@ -12,19 +12,18 @@
         <main class="main-block">
             <div class="wrapper">
                 <div class="user-login__block">
-                    <form class="user-login" action="api/login" method="POST">
-                        <label for="login" class="user-login__label">Логин<input name="login" class="input" type="text"></label>
-                        <label for="password" class="user-login__label">Пароль<input name="password" class="input" type="password"></label>
-                        <button type="submit" class="user-login__button">Войти</button>
+                    <div class="user-login">
+                        <label for="login" class="user-login__label">Логин<input id="login" name="login" class="input" type="text"></label>
+                        <label for="password" class="user-login__label">Пароль<input id="password" name="password" class="input" type="password"></label>
+                        <button id="submit" type="submit" class="user-login__button">Войти</button>
                         <a href="/signup" class="registration">Вы еще не зарегистрировались?</a>
-
                         <input class="custom-checkbox" type="checkbox" checked="checked" id="check"/>
                         <label class="user-login__remember-me" for="check">Запомнить меня</label>
-
-                    </form>
+                    </div>
                 </div>
             </div>
         </main>
         {% include "footer.html" %}
+        <script src={{ url_for("static", filename="js/login.js") }}></script>
     </body>
 </html>

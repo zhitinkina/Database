@@ -12,16 +12,17 @@
         <main class="main-block">
             <div class="wrapper">
                 <div class="registration__block">
-                    <form class="user-login" action="api/signup" method="POST">
-                        <label for="name" class="registration__label">Имя<input name="name" class="input" type="text"></label>
-                        <label for="login" class="registration__label">Логин<input name="login" class="input" type="text"></label>
-                        <label for="password" class="registration__label">Пароль<input name="password" class="input" type="password"></label>
-                        <label for="email" class="registration__label">Почта<input name="email" class="input" type="email"></label>
-                        <button type="submit" class="registration__button registration__button-label">Зарегистрироваться</button>
-                    </form>
+                    <div class="user-login">
+                        <label for="name" class="registration__label">Имя<input id="name" name="name" class="input" type="text"></label>
+                        <label for="login" class="registration__label">Логин<input id="login" name="login" class="input" type="text"></label>
+                        <label for="password" class="registration__label">Пароль<input id="password" name="password" class="input" type="password"></label>
+                        <label for="email" class="registration__label">Почта<input id="email" name="email" class="input" type="email"></label>
+                        <button id="submit" class="registration__button registration__button-label">Зарегистрироваться</button>
+                    </div>
                 </div>
             </div>
         </main>
         {% include "footer.html" %}
+        <script src={{ url_for("static", filename="js/signup.js") }}></script>
     </body>
 </html>

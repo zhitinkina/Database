@@ -12,7 +12,7 @@
         <a href="/cart"><img src={{ url_for("static", filename="images/main/basket.svg") }}></a>
         <div class="header__right">
         {% if current_user.is_authenticated %}
-            <a href="/api/logout" class="btn">Выход</a>
+            <a id="logout" class="btn">Выход</a>
         {% else %}
             <a href="/login" class="btn">Вход</a>
         {% endif %}

@@ -21,7 +21,6 @@ def signup():
 		return redirect(url_for("index"))
 	except IntegrityError as ex:
 		if ex.pgcode == errorcodes.UNIQUE_VIOLATION:
-			# flash("")
 			return "", 409
 		raise
 
@@ -41,13 +40,13 @@ def login():
 	return "", 401
 
 
-@app.route("/api/logout")  # TODO: POST
+@app.route("/api/logout", methods=["POST"])
 def logout():
 	logout_user()
 	return "", 200
 
 
-@app.route("/api/pay_cart", methods=["POST"])
+@app.route("/api/pay_cart", methods=["POST", "PATCH"])  # TODO: PATCH only
 def pay_cart():
 	if not current_user.is_authenticated:
 		return "", 401
