@@ -9,7 +9,7 @@ app = Blueprint("app", __name__)
 
 
 @app.route("/api/signup", methods=["POST"])
-def api_register():
+def signup():
 	from psycopg2 import IntegrityError, errorcodes
 
 	form = request.form
@@ -27,7 +27,7 @@ def api_register():
 
 
 @app.route("/api/login", methods=["POST"])
-def api_login():
+def login():
 	form = request.form
 	login, password = form.get("login"), form.get("password")
 	try:
@@ -42,7 +42,7 @@ def api_login():
 
 
 @app.route("/api/logout")  # TODO: POST
-def api_logout():
+def logout():
 	logout_user()
 	return "", 200
 
@@ -57,8 +57,8 @@ def pay_cart():
 	return "", 200
 
 
-@app.route("/api/change_product_quantity/<int:product_id>/<int(signed=True):delta>", methods=["PATCH, POST"])  # TODO: PATCH only
-def add_product(product_id, delta):
+@app.route("/api/change_product_quantity/<int:product_id>/<int(signed=True):delta>", methods=["POST", "PATCH"])  # TODO: PATCH only
+def change_product_quantity(product_id, delta):
 	if not current_user.is_authenticated:
 		return "", 401
 

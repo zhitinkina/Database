@@ -1,6 +1,6 @@
 function addToCart() {
     const id = $(this).attr("data-id");
-    $.post(`/api/change_product_quantity/${id}/1`, {}, (resp) => {});
+    $.post(`/api/change_product_quantity/${id}/1`);
 }
 
 $(document).ready(function () {
