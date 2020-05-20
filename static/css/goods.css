@@ -422,6 +422,5 @@
 .block-manufacturer {
     width: 42%;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.08);
-    padding: 25px;
-    height: 238px;
+    padding: 35px;
 }
