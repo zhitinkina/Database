@@ -14,6 +14,12 @@ login_manager.login_view = "login"
 app.register_blueprint(api_app)
 
 
+@app.context_processor
+def inject_is_admin():
+	role_id = db_fetch_all('SELECT role_id FROM public."user" WHERE user_id=%s', (current_user.id,))[0][0] if current_user.is_authenticated else None
+	return dict(is_admin=role_id == 1)
+
+
 @login_manager.user_loader
 def load_user(user_id):
 	try:
