@@ -49,7 +49,7 @@ def api_logout():
 
 @app.route("/api/pay_cart", methods=["POST"])
 def pay_cart():
-	if not current_user:
+	if not current_user.is_authenticated:
 		return "", 401
 
 	cart_id = db_fetch_all("SELECT get_basket_id_or_create(%s)", (current_user.id,))[0][0]
@@ -59,7 +59,7 @@ def pay_cart():
 
 @app.route("/api/change_product_quantity/<int:product_id>/<int(signed=True):delta>", methods=["PATCH, POST"])  # TODO: PATCH only
 def add_product(product_id, delta):
-	if not current_user:
+	if not current_user.is_authenticated:
 		return "", 401
 
 	cart_id = db_fetch_all("SELECT get_basket_id_or_create(%s)", (current_user.id,))[0][0]
