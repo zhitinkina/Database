@@ -68,15 +68,24 @@ def product(id):
 		return redirect(url_for("products"))
 
 
-@app.route("/products")
-def products():
+@app.route("/products", defaults={"category": None})
+@app.route("/products/<string:category>")
+def products(category):
+	categories = {
+		"face": 1,
+		"hair": 2,
+		"nails": 3,
+		"body": 4,
+	}
+
+	sql_where, args = ("WHERE category_id=%s", (categories[category],)) if category in categories.keys() else ("", None)
 	return render_template("products.html", cards=[{
 		"id": row[0],
 		"name": row[1],
 		"cost": row[2],
 		"img": row[3],
 		"description": row[4],
-	} for row in db_fetch_all("SELECT product_id, name, cost, img, description FROM product")])
+	} for row in db_fetch_all(f"SELECT product_id, name, cost, img, description FROM product {sql_where}", args)])
 
 
 @app.route("/cart")
