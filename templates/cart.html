@@ -15,27 +15,24 @@
                     <div class="main-cart">
                         {% for product in products %}
                             <div class="cart-basket">
-
                                 <div class="cart-basket--img">
                                     <img src={{ url_for("static", filename="images/" + product.img) }}>
                                 </div>
-
                                 <div class="cart-basket--info">
                                     <div class="cart-basket--name">
                                         <p class="name">{{ product.name }}</p>
-                                        <button data-id="{{ product.id }}" class="del-goods btn--delete">x</button>
+                                        <button data-id="{{ product.id }}" class="btn--delete del-goods">x</button>
                                     </div>
 
                                     <div class="cart-basket--cost">
-                                        <div class="cost">{{ product.cost }} &#x20BD;</div>
+                                        <div class="cost">{{ product.cost }}</div>
                                         <div class="cart-basket--operation">
-                                            <button data-id="{{ product.id }}" class="btn--operation minus-goods">-</button>
+                                            <button data-id="{{ product.id }}" class="btn--operation decrease-product-quantity">-</button>
                                             <input class="quantity-num" value="{{ product.quantity }}" />
-                                            <button data-id="{{ product.id }}" class="btn--operation plus-goods">+</button>
+                                            <button data-id="{{ product.id }}" class="btn--operation increase-product-quantity">+</button>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         {% endfor %}
                     </div>
@@ -46,7 +43,6 @@
                             <h1 class="itogo-block__heading">Cумма заказа:</h1>
                             <div class="cost-good">567 рублей ????</div>
                             <button class="btn btn-zakaz">Оформить заказ</button>
-
                             <div class="is-hidden text-info">
                                 <p>Ваш заказ успешно прошёл.</p>
                             </div>
@@ -62,8 +58,6 @@
             </div>
         </main>
         {% include "footer.html" %}
-
-        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
         <script src={{ url_for("static", filename="js/cart.js") }}></script>
     </body>
 </html>

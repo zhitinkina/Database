@@ -1,7 +1,12 @@
-function clickZakaz() {
-    $.post("/api/pay_cart", {}, (resp) => {})
-}
-
 $(document).ready(function () {
-   $('.btn-zakaz').on('click', clickZakaz);
+   $(".btn-zakaz").click(() => $.post("/api/pay_cart"));
+   $(".decrease-product-quantity").click(function() {
+       $.post(`/api/change_product_quantity/${$(this).attr("data-id")}/-1`);
+   });
+   $(".increase-product-quantity").click(function() {
+       $.post(`/api/change_product_quantity/${$(this).attr("data-id")}/1`);
+   });
+   $(".del-goods").click(function() {
+       $.post(`/api/change_product_quantity/${$(this).attr("data-id")}/${-32767}`); // TODO: fuck yourself
+   });
 });

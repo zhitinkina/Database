@@ -40,14 +40,14 @@
                         <div class="cart">
                             <div class="cart__wrap">
                                 <div class="cart__img">
-                                    <a href="#"><img src={{ url_for("static", filename="images/" + card.img) }}></a>
+                                    <a href="product/{{ card.id }}"><img src={{ url_for("static", filename="images/" + card.img) }}></a>
                                 </div>
                                 <div class="cart__info">
                                     <p class="name"><a href="product/{{ card.id }}">{{ card.name }}</a></p>
                                 </div>
                                 <div class="cart__descr">{{ card.description }}</div>
                                 <div class="cart__info">
-                                    <div class="cost">{{ card.cost }} &#8381;</div>
+                                    <div class="cost">{{ card.cost }}</div>
                                     <button class="add-to-cart btn" data-id="{{ card.id }}">Купить</button>
                                 </div>
                             </div>
@@ -61,8 +61,6 @@
             <div class="goods-out"></div> -->
         </main>
         {% include "footer.html" %}
-
-        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
         <script src={{ url_for("static", filename="js/main.js") }}></script>
     </body>
 </html>

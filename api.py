@@ -57,7 +57,7 @@ def pay_cart():
 	return "", 200
 
 
-@app.route("/api/change_product_quantity/<int:product_id>/<int:delta>", methods=["POST"])  # TODO: PATCH only
+@app.route("/api/change_product_quantity/<int:product_id>/<int(signed=True):delta>", methods=["PATCH, POST"])  # TODO: PATCH only
 def add_product(product_id, delta):
 	if not current_user:
 		return "", 401

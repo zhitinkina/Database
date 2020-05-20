@@ -1,5 +1,8 @@
-<footer class="footer">
-    <div class="wrapper">
-        <div class="footer__item">© 2019 LoveLy.com</div>
-    </div>
-</footer>
+{% if not hidden %}
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer__item">© 2019 LoveLy.com</div>
+        </div>
+    </footer>
+{% endif %}
+<script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>

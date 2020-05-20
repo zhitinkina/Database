@@ -29,30 +29,29 @@ def index():
 	return render_template("index.html")
 
 
-@app.route("/login")
-def login():
-	return render_template("login.html")
+@app.route("/about_us")
+def about_us():
+	return render_template("about_us.html")
 
-@app.route("/about-us")
-def aboutUs():
-	return render_template("about-us.html")
 
-@app.route("/contact-us")
-def contactUs():
-	return render_template("contact-us.html")
+@app.route("/contact_us")
+def contact_us():
+	return render_template("contact_us.html")
+
 
 @app.route("/partners")
 def partners():
 	return render_template("partners.html")
 
+
+@app.route("/login")
+def login():
+	return render_template("login.html")
+
+
 @app.route("/signup")
 def signup():
 	return render_template("signup.html")
-
-
-@app.route("/later")
-def later():
-	return render_template("later.html")
 
 
 @app.route("/product/<int:id>")
