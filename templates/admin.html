@@ -11,48 +11,24 @@
         </header>
         <main class="main-block">
             <div class="wrapper">
-                <div class="block-admin">
+                <form class="block-update" enctype="multipart/form-data">
+                    <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
+                    <label class="block-update__info">Стоимость:<input class="block-update__input" type="number" id="gcost"></label>
+                    <label class="block-update__info">Изображение:<input class="block-update__input" type="file" id="gimg"></label>
 
-                    <form class="block-update" enctype="multipart/form-data">
-                        <div class="goods-out">
-                            <select class="select-goods">
-                                <option data-id="0">Новый товар</option>
-                                {% for category in categories %}
-                                    <option data-id="{{ category.id }}">{{ category.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
-                        <label class="block-update__info">Стоимость:<input class="block-update__input" type="number" id="gcost"></label>
-                        <label class="block-update__info">Изображение:<input class="block-update__input" type="file" id="gimg"></label>
-                        <label class="block-update__info">Категория:
-                            <select class="block-update__input">
-                                {% for category in categories %}
-                                    <option data-id="{{ category.id }}">{{ category.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </label>
+                    <label class="block-update__info">Категория:
+                        <select class="block-update__input">
+                            {% for category in categories %}
+                                <option data-id="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
 
-                        <label class="block-update__info">Объем:<input class="block-update__input" type="number" id="gvolume"></label>
-                        <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
-                        <input type="hidden" id="gid">
-                    </form>
+                    <label class="block-update__info">Объем:<input class="block-update__input" type="number" id="gvolume"></label>
+                    <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
 
-                    <form class="block-manufacturer">
-                        <label class="block-update__info">Производитель:
-                            <select class="block-update__input">
-                                {% for category in categories %}
-                                    <option data-id="{{ category.id }}">{{ category.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </label>
-
-                        <label class="block-update__info">Новый производитель:<input class="block-update__input" type="text"></label>
-                        <label class="block-update__info">Описание:<input class="block-update__input" type="textarea"></label>
-                    </form>
-
-                    <button class="add-to-db btn btn-update">Обновить</button>
-                </div>
+                    <button type="submit" class="add-to-db btn btn-update">Обновить</button>
+                </form>
             </div>
         </main>
         {% include "footer.html" %}
