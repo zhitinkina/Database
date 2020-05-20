@@ -11,41 +11,65 @@
         </header>
         <main class="main-block">
             <div class="wrapper">
-                <div class="block-update">
-                    <div class="goods-out">
-                        <select class="select-goods">
-                            <option data-id="0">Новый товар</option>
-                            {% for category in categories %}
-                                <option data-id="{{ category.id }}">{{ category.name }}</option>
-                            {% endfor %}
-                        </select>
+                <div class="block-admin">
+
+                    <div class="block-update">
+                        <div class="goods-out">
+                            <select class="select-goods">
+                                <option data-id="0">Новый товар</option>
+                                {% for category in categories %}
+                                    <option data-id="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
+                        <label class="block-update__info">Стоимость:<input class="block-update__input" type="number" id="gcost"></label>
+                        <label class="block-update__info">Изображение:<input class="block-update__input" type="text" id="gimg"></label>
+                        <label class="block-update__info">Категория:
+                            <select class="block-update__input">
+                                {% for category in categories %}
+                                    <option data-id="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <label class="block-update__info">Цвет:
+                            <select class="block-update__input">
+                                <option>синий</option>
+                                <option>красный</option>
+                                <option>жёлтый</option>
+                                <option>молочный</option>
+                                <option>черный</option>
+                                <option>белый</option>
+                                <option>шоколадный</option>
+                                <option>розовый</option>
+                                <option>оранжевый</option>
+                                <option>зелёный</option>
+                                <option>голубой</option>
+                            </select>
+                        </label>
+
+                        <label class="block-update__info">Объем:<input class="block-update__input" type="number" id="gvolume"></label>
+                        <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
+                        <input type="hidden" id="gid">
                     </div>
-                    <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
-                    <label class="block-update__info">Стоимость:<input class="block-update__input" type="number" id="gcost"></label>
-                    <label class="block-update__info">Изображение:<input class="block-update__input" type="image" id="gimg"></label>
-                    <label class="block-update__info">Категория:
-                        <select class="block-update__input">
-                            {% for category in categories %}
-                                <option data-id="{{ category.id }}">{{ category.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </label>
-                    <label class="block-update__info">Цвет:<input class="block-update__input" type="color" id="gcolor"></label>
-                    <label class="block-update__info">Объем:<input class="block-update__input" type="number" id="gvolume"></label>
-                    <label class="block-update__info">Производитель:
-                        <select class="block-update__input">
-                            {% for category in categories %}
-                                <option data-id="{{ category.id }}">{{ category.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </label>
-                    <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
-                    <input type="hidden" id="gid">
-                    <button class="add-to-db btn btn-zakaz">Обновить</button>
+
+                    <div class="block-manufacturer">
+                        <label class="block-update__info">Производитель:
+                            <select class="block-update__input">
+                                {% for category in categories %}
+                                    <option data-id="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+
+                        <label class="block-update__info">Новый производитель:<input class="block-update__input" type="text"></label>
+                    </div>
+
+                    <button class="add-to-db btn btn-update">Обновить</button>
                 </div>
             </div>
         </main>
-        <footer class="footer"></footer>
+        {% include "footer.html" %}
 
         <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
         <script src={{ url_for("static", filename="js/admin.js") }}></script>

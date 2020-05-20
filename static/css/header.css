@@ -36,6 +36,10 @@
     padding: 0 0.7em;
 }
 
+.header__nav a img {
+    width: 85%;
+}
+
 .header__right {
   width: 150px;
 }
@@ -68,4 +72,14 @@
   height: 70px;
   background: #7686DE;
   clear: both;
+}
+
+.footer__item {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #fff;
+    text-align: right;
+    margin-bottom: 7px;
+    padding-top: 22px;
 }

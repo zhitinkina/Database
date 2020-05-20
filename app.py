@@ -33,6 +33,17 @@ def index():
 def login():
 	return render_template("login.html")
 
+@app.route("/about-us")
+def aboutUs():
+	return render_template("about-us.html")
+
+@app.route("/contact-us")
+def contactUs():
+	return render_template("contact-us.html")
+
+@app.route("/partners")
+def partners():
+	return render_template("partners.html")
 
 @app.route("/signup")
 def signup():

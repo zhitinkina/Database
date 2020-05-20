@@ -15,22 +15,27 @@
                     <div class="main-cart">
                         {% for product in products %}
                             <div class="cart-basket">
+
                                 <div class="cart-basket--img">
                                     <img src={{ url_for("static", filename="images/" + product.img) }}>
                                 </div>
+
                                 <div class="cart-basket--info">
-                                    <p class="name">{{ product.name }}</p>
-                                    <button data-id="{{ product.id }}" class="del-goods btn--delete">x</button>
-                                </div>
-                                <div class="cart-basket--cost">
-                                    <div class="cost">{{ product.cost }} &#x20BD;</div>
-                                    <div class="cart-basket--operation">
-                                        <button data-id="{{ product.id }}" class="btn--operation minus-goods">-</button>
-                                        <input class="quantity-num" value="{{ product.quantity }}" />
-                                        <button data-id="{{ product.id }}" class="btn--operation plus-goods">+</button>
+                                    <div class="cart-basket--name">
+                                        <p class="name">{{ product.name }}</p>
+                                        <button data-id="{{ product.id }}" class="del-goods btn--delete">x</button>
+                                    </div>
+
+                                    <div class="cart-basket--cost">
+                                        <div class="cost">{{ product.cost }} &#x20BD;</div>
+                                        <div class="cart-basket--operation">
+                                            <button data-id="{{ product.id }}" class="btn--operation minus-goods">-</button>
+                                            <input class="quantity-num" value="{{ product.quantity }}" />
+                                            <button data-id="{{ product.id }}" class="btn--operation plus-goods">+</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="cost-good">{{ product.quantity * product.cost }}</div>
+
                             </div>
                         {% endfor %}
                     </div>
@@ -41,6 +46,10 @@
                             <h1 class="itogo-block__heading">Cумма заказа:</h1>
                             <div class="cost-good">567 рублей ????</div>
                             <button class="btn btn-zakaz">Оформить заказ</button>
+
+                            <div class="is-hidden text-info">
+                                <p>Ваш заказ успешно прошёл.</p>
+                            </div>
                         </div>
                         <div id="email-field" class="email-field">
                             <label>Имя:<input type="text" id="ename"></label>
@@ -52,7 +61,7 @@
                 </div>
             </div>
         </main>
-        <footer class="footer"></footer>
+        {% include "footer.html" %}
 
         <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
         <script src={{ url_for("static", filename="js/cart.js") }}></script>

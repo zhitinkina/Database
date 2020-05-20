@@ -40,11 +40,10 @@
                         <div class="cart">
                             <div class="cart__wrap">
                                 <div class="cart__img">
-                                    <img src={{ url_for("static", filename="images/" + card.img) }}>
+                                    <a href="#"><img src={{ url_for("static", filename="images/" + card.img) }}></a>
                                 </div>
                                 <div class="cart__info">
                                     <p class="name"><a href="product/{{ card.id }}">{{ card.name }}</a></p>
-                                    <a class="add-to-later hearts" data-id="{{ card.id }}"><img src={{ url_for("static", filename="images/main/later.svg") }}></a>
                                 </div>
                                 <div class="cart__descr">{{ card.description }}</div>
                                 <div class="cart__info">
@@ -61,7 +60,7 @@
             <a href="later.php">Желания</a>
             <div class="goods-out"></div> -->
         </main>
-        <footer class="footer"></footer>
+        {% include "footer.html" %}
 
         <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
         <script src={{ url_for("static", filename="js/main.js") }}></script>

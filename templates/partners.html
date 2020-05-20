@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% with title="Партнёры" %}
+        {% include "head.html" %}
+    {% endwith %}
+    <body class="page-info">
+        <header class="header-goods">
+            {% with bla="Наши партнёры" %}
+                {% include "header.html" %}
+            {% endwith %}
+        </header>
+        <main class="main-block">
+            <div class="wrapper">
+                <div class="info">
+                    <p><a href="https://www.ozon.ru/category/krasota-i-zdorove-6500/">OZON.ru (ОЗОН.ру)</a> — российский интернет-магазин, предоставляющий своим покупателям более 5 млн позиций в 24 категориях, среди которых: электроника, бытовая техника, товары для дома и сада, товары для мам и детей, ремонт, спорт и отдых, красота и здоровье, одежда и обувь, автотовары, зоотовары, продукты питания, книги, мультимедиа, DVD, программное обеспечение, игры, музыка, антиквариат и другие.
+                    Занимает шестое место в списке самых дорогих компаний российской сети Интернета по версии российского Forbes (в феврале 2016 года журнал оценил стоимость компании в $680 млн).</p>
+                </div>
+            </div>
+        </main>
+        {% include "footer.html" %}
+
+        <script src={{ url_for("static", filename="libs/jquery-3.2.1.min.js") }}></script>
+    </body>
+</html>
