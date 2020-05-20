@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, abort
 from flask_login import LoginManager, login_required, current_user
 
 from src.database import db_fetch_all
@@ -21,6 +21,11 @@ def load_user(user_id):
 		return User(user_id, login, password)
 	except:
 		return None
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+	return "404 Not Found", 404
 
 
 @app.route("/")
@@ -107,6 +112,10 @@ def cart():
 @app.route("/admin")
 @login_required
 def admin():
+	role_id = db_fetch_all('SELECT role_id FROM public."user" WHERE user_id=%s', (current_user.id,))[0][0]
+	if role_id != 1:
+		abort(404)
+
 	return render_template("admin.html", categories=[{
 		"id": row[0],
 		"name": row[1],
