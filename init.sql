@@ -123,7 +123,6 @@ CREATE TABLE public.product
     description text COLLATE pg_catalog."default",
     category_id smallint NOT NULL,
     img character varying(256) COLLATE pg_catalog."default",
-    color character varying(50) COLLATE pg_catalog."default",
     volume smallint,
     manufacturer_id bigint NOT NULL,
     CONSTRAINT product_pkey PRIMARY KEY (product_id),
@@ -184,21 +183,21 @@ INSERT INTO public."role" (name) VALUES
 ('Администратор'),
 ('Пользователь');
 
-INSERT INTO public."product" (name, cost, description, category_id, img, color, volume, manufacturer_id) VALUES
-('Vivienne Sabo Тушь', 300, 'Тушь для ресниц супер-объемная, со сценическим эффектом', 1, 'ink.jpg', 'черная', '100', 1),
-('Палетка теней', 882, 'Палетка теней Rimmel Magnif''Eyes Blush', 1, 'pallete.jpg', 'черная', '100', 1),
-('Губная помада-тинт', 1000, 'L`Oreal Paris Rouge Signature, матовый, "Я протестую", красный', 1, 'lips.jpg', 'черная', '100', 1),
-('DIVAGE Румяна', 271, 'Румяна компактные "VELVET"', 1, 'brash1.jpg', 'черная', '100', 1),
-('Relouis Помада', 345, 'Помада губная La Mia Italia', 1, 'lips2.jpg', 'черная', '100', 1),
-('Matrix Шампунь', 1100, 'Шампунь для волос Total Results So Silver, для нейтрализации желтизны', 2, 'shampoo.jpg', 'черная', '100', 1),
-('Бигуди-бумеранги', 235, 'Harizma Бигуди-бумеранги 22x240 мм 10 шт h10983-22, зелёные', 2, 'hair-curlers.jpg', 'черная', '100', 1),
-('Расческа Tangle Teezer', 1288, 'Щетка для волос', 2, 'hairbrush.jpg', 'черная', '100', 1),
-('Лак для ногтей', 570, 'Kinetics SolarGel Polish тон 200, 15 мл', 3, 'varnish2.jpg', 'черная', '100', 1),
-('Быстрая сушка лака', 212, 'Super Fast Drying, 11 мл.', 3, 'varnish.jpg', 'черная', '100', 1),
-('Слайдер-дизайн', 345, 'Слайдер-дизайн Пары линии, sd1-1567 в наборе', 3, 'varnish-nabor.jpg', 'черная', '100', 1),
-('Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 3, 'cream.jpg', 'черная', '100', 1),
-('Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 3, 'highlighter.jpg', 'черная', '100', 1),
-('Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 3, 'brush.jpg', 'черная', '100', 1);
+INSERT INTO public."product" (name, cost, description, category_id, img, volume, manufacturer_id) VALUES
+('Vivienne Sabo Тушь', 300, 'Тушь для ресниц супер-объемная, со сценическим эффектом', 1, 'ink.jpg', '100', 1),
+('Палетка теней', 882, 'Палетка теней Rimmel Magnif''Eyes Blush', 1, 'pallete.jpg', '100', 1),
+('Губная помада-тинт', 1000, 'L`Oreal Paris Rouge Signature, матовый, "Я протестую", красный', 1, 'lips.jpg', '100', 1),
+('DIVAGE Румяна', 271, 'Румяна компактные "VELVET"', 1, 'brash1.jpg', '100', 1),
+('Relouis Помада', 345, 'Помада губная La Mia Italia', 1, 'lips2.jpg', '100', 1),
+('Matrix Шампунь', 1100, 'Шампунь для волос Total Results So Silver, для нейтрализации желтизны', 2, 'shampoo.jpg', '100', 1),
+('Бигуди-бумеранги', 235, 'Harizma Бигуди-бумеранги 22x240 мм 10 шт h10983-22, зелёные', 2, 'hair-curlers.jpg', '100', 1),
+('Расческа Tangle Teezer', 1288, 'Щетка для волос', 2, 'hairbrush.jpg', '100', 1),
+('Лак для ногтей', 570, 'Kinetics SolarGel Polish тон 200, 15 мл', 3, 'varnish2.jpg', '100', 1),
+('Быстрая сушка лака', 212, 'Super Fast Drying, 11 мл.', 3, 'varnish.jpg', '100', 1),
+('Слайдер-дизайн', 345, 'Слайдер-дизайн Пары линии, sd1-1567 в наборе', 3, 'varnish-nabor.jpg', '100', 1),
+('Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 3, 'cream.jpg', '100', 1),
+('Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 3, 'highlighter.jpg', '100', 1),
+('Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 3, 'brush.jpg', '100', 1);
 
 CREATE FUNCTION get_basket_id_or_create(u_id BIGINT) RETURNS BIGINT AS $$
 DECLARE
