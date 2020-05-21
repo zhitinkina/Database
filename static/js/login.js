@@ -1,11 +1,10 @@
-
 $(document).ready(function () {
-    $('#submit').click(() => {
+    $("#submit").click(() => {
          $.ajax("/api/login", {
               type: "POST",
               data: {
                    "login": $("#login").val(),
-                   "password": 1 + $("#password").val(),
+                   "password": $("#password").val(),
               },
               statusCode: {
                   200: () => {

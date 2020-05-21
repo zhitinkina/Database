@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#submit').click(() => {
+    $("#submit").click(() => {
          $.ajax("/api/signup", {
               type: "POST",
               data: {

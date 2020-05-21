@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for
+from flask import Blueprint, request
 from flask_login import login_user, logout_user, current_user
 
 from src.database import db_fetch_all, db_execute
@@ -11,14 +11,15 @@ app = Blueprint("app", __name__)
 @app.route("/api/signup", methods=["POST"])
 def signup():
 	from psycopg2 import IntegrityError, errorcodes
+	from hashlib import sha512
 
 	form = request.form
 	try:
 		db_execute(
 			'INSERT INTO public."user" (login, password, name, email, role_id) VALUES (%s, %s, %s, %s, %s)',
-			(form.get("login"), form.get("password"), form.get("name"), form.get("email"), 2)
+			(form.get("login"), sha512(str.encode(form.get("password"))).hexdigest(), form.get("name"), form.get("email"), 2)
 		)
-		return redirect(url_for("index"))
+		return "", 200
 	except IntegrityError as ex:
 		if ex.pgcode == errorcodes.UNIQUE_VIOLATION:
 			return "", 409
@@ -27,12 +28,14 @@ def signup():
 
 @app.route("/api/login", methods=["POST"])
 def login():
+	from hashlib import sha512
+
 	form = request.form
 	login, password = form.get("login"), form.get("password")
 	try:
-		user_id, password = db_fetch_all('SELECT user_id, password FROM public."user" WHERE login=%s', (login,))[0]
-		user = User(user_id, login, password)
-		if user.password == password:
+		user_id, user_password = db_fetch_all('SELECT user_id, password FROM public."user" WHERE login=%s', (login,))[0]
+		user = User(user_id, login, user_password)
+		if user.password == sha512(str.encode(password)).hexdigest():
 			login_user(user)
 			return "", 200
 	except:
