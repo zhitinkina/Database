@@ -71,8 +71,8 @@ ALTER TABLE public.role
 CREATE TABLE public."user"
 (
     user_id BIGSERIAL,
-    login character varying(128) COLLATE pg_catalog."default" NOT NULL,
-    password character varying(32) COLLATE pg_catalog."default" NOT NULL,
+    login character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(128) COLLATE pg_catalog."default" NOT NULL,
     name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     email character varying(50) COLLATE pg_catalog."default" NOT NULL,
     role_id smallint NOT NULL,
