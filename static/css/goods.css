@@ -255,7 +255,8 @@
 .quantity-num {
     width: 31px;
     border: 1px solid #0C21D6;
-    padding-left: 9px;
+    padding-top: 6px;
+    text-align: center;
 }
 
 /* ------------------------------------------ */
