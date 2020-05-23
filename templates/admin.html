@@ -11,22 +11,19 @@
         </header>
         <main class="main-block">
             <div class="wrapper">
-                <form class="block-update" enctype="multipart/form-data">
-                    <label class="block-update__info">Имя:<input class="block-update__input" type="text" id="gname"></label>
-                    <label class="block-update__info">Стоимость:<input class="block-update__input" type="number" id="gcost"></label>
-                    <label class="block-update__info">Изображение:<input class="block-update__input" type="file" id="gimg"></label>
-
-                    <label class="block-update__info">Категория:
-                        <select class="block-update__input">
+                <form action="/api/mutate_product" method="POST" enctype="multipart/form-data" class="block-update">
+                    <label for="name" class="block-update__info">Имя:<input name="name" class="block-update__input" type="text" id="name"></label>
+                    <label for="cost" class="block-update__info">Стоимость:<input name="cost" class="block-update__input" type="number" id="cost"></label>
+                    <label for="img" class="block-update__info">Изображение:<input name="img" class="block-update__input" type="file" id="img"></label>
+                    <label for="category" class="block-update__info">Категория:
+                        <select name="category" class="block-update__input">
                             {% for category in categories %}
-                                <option data-id="{{ category.id }}">{{ category.name }}</option>
+                                <option value="{{ category.id }}">{{ category.name }}</option>
                             {% endfor %}
                         </select>
                     </label>
-
-                    <label class="block-update__info">Описание:<textarea class="block-update__input" id="gdescr"></textarea></label>
-
-                    <button type="submit" class="add-to-db btn btn-update">Обновить</button>
+                    <label for="description" class="block-update__info">Описание:<textarea name="description" class="block-update__input" id="description"></textarea></label>
+                    <button id="submit" class="btn btn-update">Обновить</button>
                 </form>
             </div>
         </main>

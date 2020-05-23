@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_user, logout_user, current_user
+from werkzeug.utils import secure_filename
 
 from src.database import db_fetch_all, db_execute
 from src.User import User
@@ -13,7 +14,7 @@ def signup():
 	from psycopg2 import IntegrityError, errorcodes
 	from hashlib import sha512
 
-	form = request.form
+	form = request.form  # TODO: validate
 	try:
 		db_execute(
 			'INSERT INTO public."user" (login, password, name, email, role_id) VALUES (%s, %s, %s, %s, %s)',
@@ -66,4 +67,22 @@ def change_product_quantity(product_id, delta):
 
 	cart_id = db_fetch_all("SELECT get_basket_id_or_create(%s)", (current_user.id,))[0][0]
 	db_execute('SELECT patch_order(%s::BIGINT, %s::BIGINT, %s::SMALLINT);', (cart_id, product_id, delta))
+	return "", 200
+
+
+@app.route("/api/mutate_product", methods=["POST", "PATCH"])  # TODO: PATCH only
+def mutate_product():
+	from time import time
+
+	if not current_user.is_authenticated:
+		return "", 401
+
+	form = request.form  # TODO: validate
+	if "img" in request.files:
+		file = request.files["img"]
+		file_name = f"{time()}_{secure_filename(file.filename)}"
+		file.save(f"./static/images/{file_name}")
+		db_execute('INSERT INTO public."product" (name, cost, description, category_id, img) VALUES (%s, %s, %s, %s, %s)',
+		           (form.get("name"), form.get("cost"), form.get("description"), form.get("category"), file_name))
+
 	return "", 200

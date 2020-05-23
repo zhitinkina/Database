@@ -23,7 +23,6 @@
             </div> -->
             <div class="goods-out">
                 <div class="cart">
-                    <button class="add-to-later" data-id="{{ product.id }}">&hearts;</button>
                     <p class="name">{{ product.name }}</p>
                     <img src={{ url_for("static", filename="images/" + product.img) }}>
                     <div class="cost">{{ product.cost }}</div>
@@ -33,6 +32,6 @@
             </div>
         </main>
         {% include "footer.html" %}
-        <script src={{ url_for("static", filename="js/goods.js") }}></script>
+        <script src={{ url_for("static", filename="js/main.js") }}></script>
     </body>
 </html>
