@@ -78,11 +78,30 @@ def mutate_product():
 		return "", 401
 
 	form = request.form  # TODO: validate
-	if "img" in request.files:
-		file = request.files["img"]
-		file_name = f"{time()}_{secure_filename(file.filename)}"
-		file.save(f"./static/images/{file_name}")
-		db_execute('INSERT INTO public."product" (name, cost, description, category_id, img) VALUES (%s, %s, %s, %s, %s)',
-		           (form.get("name"), form.get("cost"), form.get("description"), form.get("category"), file_name))
+	if "img" not in request.files:
+		return "", 500
 
+	file = request.files["img"]
+	file_name = f"{time()}_{secure_filename(file.filename)}"
+	file.save(f"./static/images/{file_name}")
+	db_execute('INSERT INTO public."product" (name, cost, description, category_id, img) VALUES (%s, %s, %s, %s, %s)',
+	           (form.get("name"), form.get("cost"), form.get("description"), form.get("category"), file_name))
 	return "", 200
+
+
+@app.route("/api/product/<int:product_id>", methods=["GET"])
+def get_product(product_id):
+	from json import dumps as json_dumps
+
+	try:
+		row = db_fetch_all('SELECT product_id, name, category_id, cost, img, description FROM public."product" WHERE product_id=%s', (product_id,))[0]
+		return json_dumps({
+			"id": row[0],
+			"name": row[1],
+			"category_id": row[2],
+			"cost": row[3],
+			"img": row[4],
+			"description": row[5],
+		}), 200
+	except:
+		return "", 404
