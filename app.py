@@ -68,7 +68,7 @@ def signup():
 @app.route("/product/<int:id>")
 def product(id):
 	try:
-		row = db_fetch_all('SELECT product_id, name, cost, img FROM public."product" WHERE product_id=%s', (id,))[0]
+		row = db_fetch_all('SELECT product_id, name, cost::numeric, img FROM public."product" WHERE product_id=%s', (id,))[0]
 		return render_template("product.html", product={
 			"id": row[0],
 			"name": row[1],
@@ -96,7 +96,7 @@ def products(category):
 		"cost": row[2],
 		"img": row[3],
 		"description": row[4],
-	} for row in db_fetch_all(f"SELECT product_id, name, cost, img, description FROM product {sql_where}", args)])
+	} for row in db_fetch_all(f"SELECT product_id, name, cost::numeric, img, description FROM product {sql_where}", args)])
 
 
 @app.route("/cart")
@@ -109,7 +109,7 @@ def cart():
 		"quantity": row[2],
 		"img": row[3],
 		"cost": row[4],
-	} for row in db_fetch_all("""SELECT public."product".product_id, public."product".name, public."order".quantity, public."product".img, public."product".cost
+	} for row in db_fetch_all("""SELECT public."product".product_id, public."product".name, public."order".quantity, public."product".img, public."product".cost::numeric
 									FROM public."order"
 									LEFT JOIN product ON public."product".product_id = public."order".product_id
 									WHERE public."order".basket_id = %s""", (cart_id,))])

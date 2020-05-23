@@ -27,7 +27,7 @@
                                         <div class="cost">{{ product.cost }}</div>
                                         <div class="cart-basket--operation">
                                             <button data-id="{{ product.id }}" class="btn--operation decrease-product-quantity">-</button>
-                                            <input class="quantity-num" value="{{ product.quantity }}" />
+                                            <div class="quantity-num">{{ product.quantity }}</div>
                                             <button data-id="{{ product.id }}" class="btn--operation increase-product-quantity">+</button>
                                         </div>
                                     </div>
@@ -40,7 +40,7 @@
                     <div class="itogo">
                         <div class="itogo-block">
                             <h1 class="itogo-block__heading">Cумма заказа:</h1>
-                            <div class="cost-good">567 рублей ????</div>
+                            <div class="cost-good"></div>
                             <button class="btn btn-zakaz">Оформить заказ</button>
                             <div class="is-hidden text-info">
                                 <p>Ваш заказ успешно прошёл.</p>
