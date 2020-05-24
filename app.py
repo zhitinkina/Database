@@ -127,7 +127,10 @@ def admin():
 	return render_template("admin.html", categories=[{
 		"id": row[0],
 		"name": row[1],
-	} for row in db_fetch_all('SELECT category_id, name FROM public."category"')])
+	} for row in db_fetch_all('SELECT category_id, name FROM public."category"')], products=[{
+		"id": row[0],
+		"name": row[1],
+	} for row in db_fetch_all('SELECT product_id, name FROM public."product"')])
 
 
 if __name__ == "__main__":
