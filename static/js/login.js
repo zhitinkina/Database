@@ -12,7 +12,7 @@ $(document).ready(function () {
                       window.location.href = `${next}`;
                   },
                   401: () => {
-                      console.log(401); // TODO:
+                      $("#err_msg").text("Invalid login/password").show();
                   },
               },
          });

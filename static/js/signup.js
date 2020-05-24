@@ -13,7 +13,7 @@ $(document).ready(function () {
                       window.location.href = "/login";
                   },
                   409: () => {
-                      console.log(409); // TODO:
+                      $("#err_msg").text("Login/email conflict").show();
                   }
               },
          });
