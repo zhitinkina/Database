@@ -13,10 +13,10 @@
             <div class="wrapper">
                 <form action="/api/mutate_product" method="POST" enctype="multipart/form-data" class="block-update">
                     <div class="goods-out">
-                        <select class="select-goods">
+                        <select id="id-prod" class="select-goods">
                             <option data-id="0">Новый товар</option>
                             {% for product in products %}
-                                <option for="product" data-id="{{ product.id }}" class="option">{{ product.name }}</option>
+                                <option for="product" data-id="{{ product.id }}" value="{{ product.id }}" class="option">{{ product.name }}</option>
                             {% endfor %}
                         </select>
                     </div>

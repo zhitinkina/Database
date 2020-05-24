@@ -94,7 +94,7 @@ def get_product(product_id):
 	from json import dumps as json_dumps
 
 	try:
-		row = db_fetch_all('SELECT product_id, name, category_id, cost::numeric, img, description FROM public."product" WHERE product_id=%s', (product_id,))[0]
+		row = db_fetch_all('SELECT product_id, name, category_id, cost, img, description FROM public."product" WHERE product_id=%s', (product_id,))[0]
 		return json_dumps({
 			"id": row[0],
 			"name": row[1],
@@ -103,5 +103,5 @@ def get_product(product_id):
 			"img": row[4],
 			"description": row[5],
 		}), 200
-	except:
-		return "", 404
+	except Exception as ex:
+		return str(ex), 500
