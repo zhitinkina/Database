@@ -128,10 +128,14 @@ CREATE TABLE public."order"
     product_id bigint NOT NULL,
     quantity smallint NOT NULL,
     CONSTRAINT order_pkey PRIMARY KEY (basket_id, product_id),
+    CONSTRAINT order_basket_id_fkey FOREIGN KEY (basket_id)
+        REFERENCES public.basket (basket_id) MATCH SIMPLE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT,
     CONSTRAINT order_product_id_fkey FOREIGN KEY (product_id)
         REFERENCES public.product (product_id) MATCH SIMPLE
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
+        ON UPDATE RESTRICT
+        ON DELETE RESTRICT
 )
 WITH (
     OIDS = FALSE
