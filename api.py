@@ -52,11 +52,26 @@ def logout():
 
 @app.route("/api/pay_cart", methods=["POST", "PATCH"])  # TODO: PATCH only
 def pay_cart():
+	from src.email import report_on_email
+
 	if not current_user.is_authenticated:
 		return "", 401
 
 	cart_id = db_fetch_all("SELECT get_basket_id_or_create(%s)", (current_user.id,))[0][0]
+	if not db_fetch_all('SELECT 1 FROM public."order" WHERE basket_id=%s', (cart_id,)):
+		return "", 204
+
 	db_execute('UPDATE public."basket" SET basket_status_id=2 WHERE basket_id=%s', (cart_id,))
+	report = db_fetch_all('''
+		SELECT p.name, p.cost, o.quantity
+		FROM public."basket" b
+		LEFT JOIN public."order" o ON o.basket_id = b.basket_id
+		LEFT JOIN public."product" p ON p.product_id = o.product_id
+		WHERE b.basket_id=%s
+''', (cart_id,))
+	report = "\n".join([f"{row[0]} ({row[1]}) x{row[2]} = {row[1] * row[2]}" for row in report]).encode("utf-8").strip()
+	report_on_email(report, db_fetch_all('SELECT email FROM public."user" WHERE user_id=%s', (current_user.id,))[0][0])
+
 	return "", 200
 
 
@@ -94,14 +109,14 @@ def get_product(product_id):
 	from json import dumps as json_dumps
 
 	try:
-		row = db_fetch_all('SELECT product_id, name, category_id, cost, img, description FROM public."product" WHERE product_id=%s', (product_id,))[0]
+		row = db_fetch_all('SELECT product_id, name, category_id, cost::numeric, img, description FROM public."product" WHERE product_id=%s', (product_id,))[0]
 		return json_dumps({
 			"id": row[0],
 			"name": row[1],
-			"category_id": row[2],
-			"cost": row[3],
+			"category": row[2],
+			"cost": float(row[3]),
 			"img": row[4],
 			"description": row[5],
 		}), 200
-	except Exception as ex:
-		return str(ex), 500
+	except:
+		return "", 404

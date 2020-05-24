@@ -24,7 +24,7 @@
                     <label for="cost" class="block-update__info">Стоимость:<input name="cost" class="block-update__input" type="number" id="cost"></label>
                     <label for="img" class="block-update__info">Изображение:<input name="img" class="block-update__input" type="file" id="img"></label>
                     <label for="category" class="block-update__info">Категория:
-                        <select name="category" class="block-update__input">
+                        <select name="category" class="block-update__input" id="category">
                             {% for category in categories %}
                                 <option value="{{ category.id }}">{{ category.name }}</option>
                             {% endfor %}
