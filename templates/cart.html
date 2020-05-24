@@ -16,7 +16,7 @@
                         {% for product in products %}
                             <div class="cart-basket">
                                 <div class="cart-basket--img">
-                                    <a href="/product/{{ product.id }}"><img src={{ url_for("static", filename="images/" + product.img) }}></a>
+                                    <a href="/product/{{ product.id }}"><img src={{ url_for("static", filename="images/" + product.img) }} title="Product-img"></a>
                                 </div>
                                 <div class="cart-basket--info">
                                     <div class="cart-basket--name">
@@ -42,15 +42,6 @@
                             <h1 class="itogo-block__heading">Cумма заказа:</h1>
                             <div class="cost-good"></div>
                             <button class="btn btn-zakaz">Оформить заказ</button>
-                            <div class="is-hidden text-info">
-                                <p>Ваш заказ успешно прошёл.</p>
-                            </div>
-                        </div>
-                        <div id="email-field" class="email-field">
-                            <label>Имя:<input type="text" id="ename"></label>
-                            <label>Email:<input type="text" id="email"></label>
-                            <label>Телефон:<input type="text" id="ephone"></label>
-                            <label><button class="send-email">Заказать</button></label>
                         </div>
                     </div>
                 </div>

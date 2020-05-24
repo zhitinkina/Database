@@ -70,12 +70,13 @@ def signup():
 @app.route("/product/<int:id>")
 def product(id):
 	try:
-		row = db_fetch_all('SELECT product_id, name, cost::numeric, img FROM public."product" WHERE product_id=%s', (id,))[0]
+		row = db_fetch_all('SELECT product_id, name, cost::numeric, img, description FROM public."product" WHERE product_id=%s', (id,))[0]
 		return render_template("product.html", product={
 			"id": row[0],
 			"name": row[1],
 			"cost": row[2],
 			"img": row[3],
+			"description": row[4],
 		})
 	except Exception as ex:
 		return redirect(url_for("products"))

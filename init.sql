@@ -167,9 +167,9 @@ INSERT INTO public."product" (name, cost, description, category_id, img) VALUES
 ('Лак для ногтей', 570, 'Kinetics SolarGel Polish тон 200, 15 мл', 3, 'varnish2.jpg'),
 ('Быстрая сушка лака', 212, 'Super Fast Drying, 11 мл.', 3, 'varnish.jpg'),
 ('Слайдер-дизайн', 345, 'Слайдер-дизайн Пары линии, sd1-1567 в наборе', 3, 'varnish-nabor.jpg'),
-('Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 3, 'cream.jpg'),
-('Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 3, 'highlighter.jpg'),
-('Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 3, 'brush.jpg');
+('Крем для тела', 470, 'Botanic Secrets Апельсин и какао 150мл', 4, 'cream.jpg'),
+('Молочко-хайлайтер', 845, 'MIXIT Бронзовое молочко-хайлайтер для тела Unicorn Shimmer Milk Color Bronze, 100 мл', 4, 'highlighter.jpg'),
+('Большая щётка', 345, 'Lapochka большая щётка из бука для сухого массажа max (щетина кабана) средней жесткости', 4, 'brush.jpg');
 
 CREATE FUNCTION get_basket_id_or_create(u_id BIGINT) RETURNS BIGINT AS $$
 DECLARE

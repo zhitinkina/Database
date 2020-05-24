@@ -14,19 +14,19 @@
             <div class="wrapper">
                 <div class="category__block">
                     <a href="/products/hair" class="category__item">
-                        <img src={{ url_for("static", filename="images/main/hair.jpg") }}>
+                        <img src={{ url_for("static", filename="images/main/hair.jpg") }} title="Hair">
                         <div class="category__name">Волосы</div>
                     </a>
                     <a href="/products/body" class="category__item">
-                        <img src={{ url_for("static", filename="images/main/body.jpg") }}>
+                        <img src={{ url_for("static", filename="images/main/body.jpg") }} title="Body">
                         <div class="category__name">Тело</div>
                     </a>
                     <a href="/products/nails" class="category__item">
-                        <img src={{ url_for("static", filename="images/main/manik.jpg") }}>
+                        <img src={{ url_for("static", filename="images/main/manik.jpg") }} title="Manik">
                         <div class="category__name">Ногти</div>
                     </a>
                     <a href="/products/face" class="category__item">
-                        <img src={{ url_for("static", filename="images/main/cosmetic.jpg") }}>
+                        <img src={{ url_for("static", filename="images/main/cosmetic.jpg") }} title="Cosmetic">
                         <div class="category__name">Лицо</div>
                     </a>
                 </div>
@@ -40,7 +40,7 @@
                         <div class="cart">
                             <div class="cart__wrap">
                                 <div class="cart__img">
-                                    <a href="product/{{ card.id }}"><img src={{ url_for("static", filename="images/" + card.img) }}></a>
+                                    <a href="product/{{ card.id }}"><img src={{ url_for("static", filename="images/" + card.img) }} title="Product-img"></a>
                                 </div>
                                 <div class="cart__info">
                                     <p class="name"><a href="product/{{ card.id }}">{{ card.name }}</a></p>
@@ -55,10 +55,6 @@
                     {% endfor %}
                 </div>
             </div>
-            <!-- <a href="cart.php">Корзина</a>
-            <div class="mini-cart"></div>
-            <a href="later.php">Желания</a>
-            <div class="goods-out"></div> -->
         </main>
         {% include "footer.html" %}
         <script src={{ url_for("static", filename="js/main.js") }}></script>

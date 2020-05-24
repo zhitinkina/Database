@@ -1,6 +1,6 @@
 <div class="wrapper header__wrap">
     <div class="header__logo">
-        <a href="/index"><img src={{ url_for("static", filename="images/main/logo.svg") }}></a>
+        <a href="/index"><img src={{ url_for("static", filename="images/main/logo.svg") }} title="Logo-main"></a>
     </div>
     <nav class="header__nav">
         {% if is_admin %}
@@ -9,7 +9,7 @@
         <div class="header__right">
             <a href="/products" class="btn btn--category">Товары</a>
         </div>
-        <a href="/cart"><img src={{ url_for("static", filename="images/main/basket.svg") }}></a>
+        <a href="/cart"><img src={{ url_for("static", filename="images/main/basket.svg") }} title="Logo-basket"></a>
         <div class="header__right">
         {% if current_user.is_authenticated %}
             <a id="logout" class="btn">Выход</a>
