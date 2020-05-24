@@ -89,16 +89,25 @@ def change_product_quantity(product_id, delta):
 def mutate_product():
 	from time import time
 
+	def save_file(file):
+		file_name = f"{time()}_{secure_filename(file.filename)}"
+		file.save(f"./static/images/{file_name}")
+		return file_name
+
 	if not current_user.is_authenticated:
 		return "", 401
 
 	form = request.form  # TODO: validate
-	if "img" not in request.files:
-		return "", 500
 
-	file = request.files["img"]
-	file_name = f"{time()}_{secure_filename(file.filename)}"
-	file.save(f"./static/images/{file_name}")
+	# TODO: здесь должна быть транзакция, но я хочу пивка
+	bla = db_fetch_all('SELECT product_id, img FROM public."product" WHERE name=%s', (form.get("name"),))
+	if bla:
+		file_name = save_file(request.files["img"]) if request.files["img"] else bla[0][1]
+		db_execute('UPDATE public."product" SET name=%s, cost=%s, description=%s, category_id=%s, img=%s WHERE product_id=%s',
+		           (form.get("name"), form.get("cost"), form.get("description"), form.get("category"), file_name, bla[0][0]))
+		return "", 200
+
+	file_name = save_file(request.files["img"])
 	db_execute('INSERT INTO public."product" (name, cost, description, category_id, img) VALUES (%s, %s, %s, %s, %s)',
 	           (form.get("name"), form.get("cost"), form.get("description"), form.get("category"), file_name))
 	return "", 200
