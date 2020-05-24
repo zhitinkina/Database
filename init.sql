@@ -206,3 +206,9 @@ BEGIN
     END IF;
 END $$
 LANGUAGE PLPGSQL;
+
+CREATE INDEX ON public."user" (user_id, role_id);
+CREATE INDEX ON public."user" (login, password);
+CREATE INDEX ON public."basket" (user_id, basket_status_id, basket_id);
+CREATE INDEX ON public."order" (basket_id, product_id, quantity);
+CREATE INDEX ON public."product" (product_id, name);
