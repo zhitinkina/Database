@@ -97,9 +97,8 @@ def mutate_product():
 	if not current_user.is_authenticated:
 		return "", 401
 
-	form = request.form  # TODO: validate
+	form = request.form
 
-	# TODO: здесь должна быть транзакция, но я хочу пивка
 	bla = db_fetch_all('SELECT product_id, img FROM public."product" WHERE name=%s', (form.get("name"),))
 	if bla:
 		file_name = save_file(request.files["img"]) if request.files["img"] else bla[0][1]
